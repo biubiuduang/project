@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="keywords" content="金山云样式规范">
+    <meta name="description" content="金山云样式规范">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>金山云控制台</title>
+    <link rel="shortcut icon" href="http://www.ksyun.com/assets/img/static/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="%E9%87%91%E5%B1%B1%E4%BA%91%E6%8E%A7%E5%88%B6%E5%8F%B0_files/base.css">
+    <style>
+        sidebar,
+        section {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 1px 1px 0 #f3f3f3;
+        }
+        sidebar {
+            float:left;
+            width: 150px;
+            position: fixed;
+            padding: 10px 0;
+            height: 100%;
+        }
+        sidebar a {
+            display: block;
+            padding: 5px 10px;
+            font-size: 14px;
+            color: #6d6d6d;
+        }
+        sidebar .todo {
+            color: #ccc;
+        }
+        section {
+            padding: 0 20px 20px;
+            margin-bottom: 26px;
+            margin-left: 170px;
+            background: #fff;
+        }
+        section > h1 {
+            border-bottom: 1px solid #eee;
+            font-size: 18px;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+        section .container {
+            margin: 30px 0;
+        }
+
+        section .item {
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+        .clearfix {
+            clear: both;
+        }
+        .ksc-modal-section{
+            padding: 20px;
+            background-color: #efefef;
+        }
+
+        .ksc-modal-section .ks-modal {
+            position: relative;
+            top: auto;
+            right: auto;
+            bottom: auto;
+            left: auto;
+            z-index: 1;
+            display: block;
+        }
+
+        .standard-ctn{
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<!-- 顶部导航栏 -->
+<header class="ctrl-nav-container">
+    <nav class="clearfix">
+        <div class="ksyun-logo pull-left">
+            <a href="javascript:;">
+                <i class="icon icon-logo-32"></i><span>金山云控制台</span>
+            </a>
+        <span class=" beta"></span></div>
+        <!-- 收起展开开关 -->
+        <div class="sidebar-btn pull-left text-center">
+            <i class="icon icon-shink-20"></i>
+        </div>
+    <ul class=" nav-navbar pull-right text-center"><li><a href="http://feedback.console.ksyun.com/" target="_blank">意见反馈</a></li><li class=" hide"><a href="javascript:void(0);">消息<span class="bubble">7</span></a></li><li><a href="http://www.ksyun.com/beian" target="_blank">备案</a></li><li class=" hide"><a href="http://www.ksyun.com/workorder" target="_blank">工单</a></li><li><a href="http://www.ksyun.com/doc/index" target="_blank">帮助</a></li><li><a href="javascript:;"><!--<img class="head-pic" src="//fe.ksyun.com/last/images/head.jpg" alt="头像">--><span class="user-name">kingsoft_s3@163.com       </span><span class="triangle"></span></a>		<ul>			<li><a href="javascript:;">余额：<input id="charge-btn" class="btn btn-warning" value="充值" type="button"></a></li>			<li><a href="javascript:;">￥<b>-290765.5512           </b></a></li>			<li><a href="javascript:;" class="line"></a></li>			<li><a href="http://ucenter.console.ksyun.com/index.html#%21/user/manage">个人中心</a></li>			<li><a href="http://www.ksyun.com/user/logout">退出登录</a></li>		</ul></li></ul><div class=" switchBtn hide"><span><i class="icon icon-switch-16"></i>切换老控制台</span></div></nav>
+</header>
+
+<!-- 侧边导航栏 -->
+<div class="ctrl-sidebar-container">
+<nav><ul><li class=" home-option one-level" id="1"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '首页','','1']);" href="http://console.ksyun.com/index.html#%21/home"><i class="icon icon-home-16"></i><span>首页</span></a></li><li class=" two-level option-close" id="2"><a href="javascript:void(0)"><i class="icon icon-calculate-16"></i><span>计算资源</span><i class="level icon icon-up-10 rotate"></i></a><ul class=" list-unstyled"><li id="3"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '云服务器','','3']);" href="http://kec.console.ksyun.com/#/"><i class="icon "></i><span>云服务器</span></a></li><li id="4"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '云物理主机','','4']);" href="http://epc.console.ksyun.com/"><i class="icon "></i><span>云物理主机</span></a></li></ul></li><li class=" two-level option-close" id="6"><a href="javascript:void(0)"><i class="icon icon-network-16"></i><span>网络</span><i class="level icon icon-up-10 rotate"></i></a><ul class=" list-unstyled"><li id="7"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '弹性IP','','7']);" href="http://network.console.ksyun.com/index.html#%21/eip"><i class="icon "></i><span>弹性IP</span></a></li><li id="8"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '负载均衡','','8']);" href="http://network.console.ksyun.com/index.html#%21/slb"><i class="icon "></i><span>负载均衡</span></a></li><li id="9"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '虚拟私有网络','','9']);" href="http://network.console.ksyun.com/index.html#%21/vpc"><i class="icon "></i><span>虚拟私有网络</span></a></li><li id="10"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '域名服务','','10']);" href="http://network.console.ksyun.com/index.html#%21/dns"><i class="icon "></i><span>域名服务</span></a></li></ul></li><li class=" two-level option-close" id="19"><a href="javascript:void(0)"><i class="icon icon-db-16"></i><span>数据库</span><i class="level icon icon-up-10 rotate"></i></a><ul class=" list-unstyled"><li id="14"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '关系型数据库','','14']);" href="http://console.ksyun.com/index.html#%21/other/rds"><i class="icon "></i><span>关系型数据库</span></a></li><li id="14"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '缓存','','14']);" href="http://console.ksyun.com/index.html#%21/other/ksc"><i class="icon "></i><span>缓存</span></a></li><li id="14"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', 'NoSQL数据库','','14']);" href="http://console.ksyun.com/index.html#%21/other/kts"><i class="icon "></i><span>NoSQL数据库</span></a></li></ul></li><li class=" two-level option-close" id="18"><a href="javascript:void(0)"><i class="icon icon-analyse-16"></i><span>数据分析</span><i class="level icon icon-up-10 rotate"></i></a><ul class=" list-unstyled"><li id="14"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '托管Hadoop','','14']);" href="http://kmr.console.ksyun.com/"><i class="icon "></i><span>托管Hadoop</span></a></li></ul></li><li class=" two-level option-close" id="14"><a href="javascript:void(0)"><i class="icon icon-content-transform-16"></i><span>存储与内容传输</span><i class="level icon icon-up-10 rotate"></i></a><ul class=" list-unstyled"><li id="14"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '对象存储','','14']);" target="_blank" href="http://ks3.ksyun.com/console.html"><i class="icon "></i><span>对象存储</span></a></li><li id="14"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '内容分发网络','','14']);" target="_blank" href="http://cdn.ksyun.com/"><i class="icon "></i><span>内容分发网络</span></a></li></ul></li><li class=" two-level option-close" id="20"><a href="javascript:void(0)"><i class="icon icon-monitor-16"></i><span>云监控</span><i class="level icon icon-up-10 rotate"></i></a><ul class=" list-unstyled"><li id="14"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '云服务','','14']);" href="http://monitor.console.ksyun.com/#%21/monitor/list"><i class="icon "></i><span>云服务</span></a></li><li id="14"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '实例组管理','','14']);" href="http://monitor.console.ksyun.com/#%21/monitor/group"><i class="icon "></i><span>实例组管理</span></a></li><li id="14"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '告警管理','','14']);" href="http://monitor.console.ksyun.com/#%21/monitor/rule"><i class="icon "></i><span>告警管理</span></a></li><li id="14"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '联系人管理','','14']);" href="http://monitor.console.ksyun.com/#%21/monitor/linkman"><i class="icon "></i><span>联系人管理</span></a></li></ul></li><li class=" two-level option-close" id="15"><a href="javascript:void(0)"><i class="icon icon-enterprise-20"></i><span>企业类服务</span><i class="level icon icon-up-10 rotate"></i></a><ul class=" list-unstyled"><li id="14"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '金山企业云盘','','14']);" target="_blank" href="http://pan.ksyun.com/account/signup"><i class="icon "></i><span>金山企业云盘</span></a></li></ul></li><li class=" two-level option-close" id="21"><a href="javascript:void(0)"><i class="icon icon-cloud-security-l6"></i><span>云安全</span><i class="level icon icon-up-10 rotate"></i></a><ul class=" list-unstyled"><li id="14"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '安全服务','','14']);" href="http://security.console.ksyun.com/"><i class="icon "></i><span>安全服务</span></a></li></ul></li><li class=" two-level option-close" id="11"><a href="javascript:void(0)"><i class="icon icon-safe-16"></i><span>身份与管理</span><i class="level icon icon-up-10 rotate"></i></a><ul class=" list-unstyled"><li id="12"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '身份与访问控制','','12']);" href="http://iam.console.ksyun.com/"><i class="icon "></i><span>身份与访问控制</span></a></li></ul></li><li class=" user-one-option sidebar-split" id="16"><a href="javascript:void(0)"><i class="icon icon-user-16"></i><span>个人中心</span></a></li><li class=" user-one-option two-level option-close" id="17"><a href="javascript:void(0)"><i class="icon icon-account-16"></i><span>账号管理</span><i class="level icon icon-up-10 rotate"></i></a><ul class=" list-unstyled"><li id="14"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '账号设置','','14']);" href="http://ucenter.console.ksyun.com/index.html#%21/user/manage"><i class="icon "></i><span>账号设置</span></a></li><li id="14"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '个人资料','','14']);" href="http://ucenter.console.ksyun.com/index.html#%21/user/modify"><i class="icon "></i><span>个人资料</span></a></li></ul></li><li class=" user-one-option two-level option-close" id="18"><a href="javascript:void(0)"><i class="icon icon-cost-16"></i><span>费用中心</span><i class="level icon icon-up-10 rotate"></i></a><ul class=" list-unstyled"><li id="14"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '账户总览','','14']);" href="http://ucenter.console.ksyun.com/index.html#%21/account"><i class="icon "></i><span>账户总览</span></a></li><li id="14"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '订单管理','','14']);" href="http://ucenter.console.ksyun.com/index.html#%21/order"><i class="icon "></i><span>订单管理</span></a></li><li id="14"><a onclick="_czc.push(['_trackEvent', '左侧菜单', '点击', '账单管理','','14']);" href="http://ucenter.console.ksyun.com/index.html#%21/bill"><i class="icon "></i><span>账单管理</span></a></li></ul></li></ul></nav></div>
+<!-- 各个产品部门的内容区域展示 -->
+<div class="ctrl-main-container">
+    <sidebar>
+        <a href="#cssreset">css重置</a>
+        <a href="#layout">排版</a>
+        <a href="#list">列表</a>
+        <a href="#warning">警告框</a>
+        <a href="#dialog">模态框</a>
+        <a href="#icon">图标</a>
+        <a href="#btn">按钮</a>
+        <a href="#btn-group">按钮组</a>
+        <a href="#droplist">下拉菜单</a>
+        <a href="#dropdown">下拉框</a>
+        <a href="#pager">翻页</a>
+        <a href="#input">输入框</a>
+        <a href="#search">搜索框</a>
+        <a href="#drag">拖动条</a>
+        <a href="#control">小控件</a>
+        <a href="#table">表格</a>
+        <a href="#threelevelmenu">三级菜单</a>
+        <a href="#stepper">分步菜单</a>
+        <a href="#spinner">增减按钮</a>
+        <a href="#tabbutton">标签页</a>
+        <a href="#frame-public-store">公共存储</a>
+    </sidebar>
+
+    <section id="cssreset">
+        <h1>css重置</h1>
+        <div class="container">
+            <p1>为了增强跨浏览器表现的一致性，我们使用了 <a href="http://necolas.github.io/normalize.css/" target="_blank">Normalize.css</a>，这是由 Nicolas Gallagher 和 Jonathan Neal 维护的一个CSS 重置样式库</p1>
+        </div>
+    </section>
+
+    <section id="layout">
+        <h1>排版</h1>
+        <h2>字体大小</h2>
+        <div class="container">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td><h1>h1. KSC heading</h1></td>
+                  <td>半加粗 18px</td>
+                </tr>
+                <tr>
+                  <td><h2>h2. KSC heading</h2></td>
+                  <td>半加粗 16px</td>
+                </tr>
+                <tr>
+                  <td><h3>h3. KSC heading</h3></td>
+                  <td>半加粗 14px</td>
+                </tr>
+                <tr>
+                  <td><h4>h4. KSC heading</h4></td>
+                  <td>半加粗 12px</td>
+                </tr>
+              </tbody>
+            </table>
+            <pre>              <code class="html hljs xml">
+                <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>h1. KSC heading<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>h2. KSC heading<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>h3. KSC heading<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span>h4. KSC heading<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+              </code>
+            </pre>
+            <p>在标题内还可以包含 <code>&lt;small&gt;</code> 标签或赋予 <code>.small </code>类的元素，可以用来标记副标题。</p>
+            <table class="table">
+                <tbody>
+                    <tr>
+                      <td><h1>h1. KSC heading <small>Secondary text</small></h1></td>
+                    </tr>
+                    <tr>
+                      <td><h2>h2. KSC heading <small>Secondary text</small></h2></td>
+                    </tr>
+                    <tr>
+                      <td><h3>h3. KSC heading <small>Secondary text</small></h3></td>
+                    </tr>
+                    <tr>
+                      <td><h4>h4. KSC heading <small>Secondary text</small></h4></td>
+                    </tr>
+                </tbody>
+            </table>
+            <pre><code class="html hljs xml">
+                <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>h1. KSC heading <span class="hljs-tag">&lt;<span class="hljs-name">small</span>&gt;</span>Secondary text<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>h2. KSC heading <span class="hljs-tag">&lt;<span class="hljs-name">small</span>&gt;</span>Secondary text<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>h3. KSC heading <span class="hljs-tag">&lt;<span class="hljs-name">small</span>&gt;</span>Secondary text<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span>h4. KSC heading <span class="hljs-tag">&lt;<span class="hljs-name">small</span>&gt;</span>Secondary text<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+            </code></pre>
+        </div>
+        <h2>正文</h2>
+        <div class="container">
+            <p>全局 <code>font-size</code> 设置为 12px，<code>line-height</code> 设置为 1.428。这些属性直接赋予 <code>&lt;body&gt;</code>元素和所有段落元素。另外，<code>&lt;p&gt;</code> （段落）元素还被设置了等于 1/2 行高（即 10px）的底部外边距（margin）。示例：</p>
+            <p>金山云物理主机（Elastic Phsical 
+Cloud，简称EPC）服务提供强大性能和高可用的独享物理服务器，一切资源按需提供，灵活计费，搭配云虚拟主机，让您使用极低的成本全面掌控基础架
+构。金山云服务器（Kingsoft Elastic 
+Compute，简称KEC）是配备了SSD高性能固态磁盘，可从容应对客户多种业务场景下用量激增的局面， 
+为用户在业务高峰期保驾护航。金山云服务器使用Raid技术构建的磁盘冗余阵列， 
+能够多重保护数据安全，并深度有效的提升了磁盘读写能力，资源可以随时弹性扩展， 
+配合灵活多样的计费方式，为客户最大程度的节省运营成本，提高资源的利用率</p>
+        </div>
+        <h2>情境文本</h2>
+        <div class="container">
+            <p>通过颜色来展示意图，提供了一组工具类：示例：</p>
+            <p class="text-muted">用于一般不太想强调的内容或是注释、日期等，有时也可以正文使用</p>
+            <p class="text-primary">默认使用链接颜色</p>
+            <p class="text-warning">需要特别强调显示的内容颜色</p>
+            <p class="text-danger">文字警示颜色</p>
+            <pre><code class="html hljs xml">
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-muted"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-primary"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-warning"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-danger"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            </code></pre>
+        </div>
+        <h2>对齐</h2>
+        <div class="container">
+            <p>通过文本对齐类，可以简单方便的将文字重新对齐。</p>
+            <p class="text-left">Left aligned text.</p>
+            <p class="text-center">Center aligned text.</p>
+            <p class="text-right">Right aligned text.</p>
+            <p class="text-justify">Justified text.</p>
+            <p class="text-nowrap">No wrap text.</p>
+            <pre><code class="html hljs xml">
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-left"</span>&gt;</span>Left aligned text.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-center"</span>&gt;</span>Center aligned text.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-right"</span>&gt;</span>Right aligned text.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-justify"</span>&gt;</span>Justified text.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-nowrap"</span>&gt;</span>No wrap text.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            </code></pre>
+        </div>
+        <h2>改变大小写</h2>
+        <div class="container">
+            <p>通过这几个类可以改变文本的大小写。</p>
+            <p class="text-lowercase">Lowercased text.</p>
+            <p class="text-uppercase">Uppercased text.</p>
+            <p class="text-capitalize">Capitalized text.</p>
+            <pre><code class="html hljs xml">
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-lowercase"</span>&gt;</span>Left aligned text.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-uppercase"</span>&gt;</span>Center aligned text.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-capitalize"</span>&gt;</span>Right aligned text.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            </code></pre>
+        </div>
+    </section>
+
+    <section id="list">
+        <h1>列表</h1>
+        <h2>无序列表</h2>
+        <div class="container">
+            <p>排列顺序无关紧要的一列元素。示例：</p>
+            <ul>
+                <li>一键式创建，分钟级百台服务器开启</li>
+                <li>支持3种数据盘存储，满足不同的I/O性能需求</li>
+                <li>支持主机随时升级CPU、内存、磁盘</li>
+                <li>Facilisis in pretium nisl aliquet</li>
+                <li>快速备份
+                    <ul>
+                      <li>支持用户自主制作镜像创建实例，以及系统重装</li>
+                      <li>支持用户自主设置快照策略，对系统盘、磁盘数据生成备份，快速恢复数据</li>
+                    </ul>
+                </li>
+                <li>支持专有网络和经典网络，提供灵活的网络规划选择</li>
+                <li>提供实时监控，性能高低一目了然</li>
+            </ul>
+            <pre><code class="html hljs xml">
+                <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+            </code></pre>
+        </div>
+        <h2>有序列表</h2>
+        <div class="container">
+            <p>顺序至关重要的一组元素。示例：</p>
+            <ol>
+              <li>高品质品牌服务器，多核心CPU、128GB内存、2 X 万兆网卡适应高性能应用场景、支持SAS和SATA硬盘</li>
+              <li>多链路保障，多重用户隔离技术，完备的硬件监测及故障预测系统</li>
+              <li>物理主机服务 5 到 15分钟内响应，2 到 4小时内交付</li>
+              <li>7X24 支持服务，提供99.9% 高可用服务</li>
+            </ol>
+            <pre><code class="html hljs xml">
+                <span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+            </code></pre>
+        </div>
+        <h2>无样式列表</h2>
+        <div class="container">
+            <p>移除了默认的 <code>list-style</code> 样式和左侧外边距的一组元素（只针对直接子元素）。这是针对直接子元素的，也就是说，你需要对所有嵌套的列表都添加这个类才能具有同样的样式。示例：</p>
+            <ul class="list-unstyled">
+                <li>一键式创建，分钟级百台服务器开启</li>
+                <li>支持3种数据盘存储，满足不同的I/O性能需求</li>
+                <li>支持主机随时升级CPU、内存、磁盘</li>
+                <li>Facilisis in pretium nisl aliquet</li>
+                <li>快速备份
+                    <ul>
+                      <li>支持用户自主制作镜像创建实例，以及系统重装</li>
+                      <li>支持用户自主设置快照策略，对系统盘、磁盘数据生成备份，快速恢复数据</li>
+                    </ul>
+                </li>
+                <li>支持专有网络和经典网络，提供灵活的网络规划选择</li>
+                <li>提供实时监控，性能高低一目了然</li>
+            </ul>
+            <pre><code class="html hljs xml">
+                <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"list-unstyled"</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+            </code></pre>
+        </div>
+        <h2>内联列表</h2>
+        <div class="container">
+            <p>通过设置 <code>display: inline-block;</code> 并添加少量的内补（padding），将所有元素放置于同一行, 示例：</p>
+            <ul class="list-inline">
+                <li>一键式创建，分钟级百台服务器开启</li>
+                <li>支持3种数据盘存储，满足不同的I/O性能需求</li>
+                <li>支持主机随时升级CPU、内存、磁盘</li>
+            </ul>
+            <pre><code class="html hljs xml">
+                <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"list-inline"</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+            </code></pre>
+        </div>
+    </section>
+
+    <section id="warning">
+        <h1>警告框</h1>
+        <div class="container">
+            <p>警告框组件通过提供一些灵活的预定义消息，为常见的用户动作提供反馈消息。<code>.ks-alert</code> 类是必须要设置的，另外我们还提供了有特殊意义的3个类（例如，<code>.ks-alert-success</code>），代表不同的警告信息。</p>
+            <div>
+                <div class="ks-alert ks-alert-success">
+                  开启主机成功！
+                </div>
+                <div class="ks-alert ks-alert-warning">
+                  云主机运行异常，请注意！
+                </div>
+                <div class="ks-alert ks-alert-danger">
+                  删除失败，不能删除运行中的主机！
+                </div>
+            </div>
+            <pre><code class="html hljs xml">
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-alert ks-alert-success"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-alert ks-alert-warning"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-alert ks-alert-danger"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            </code></pre>
+            <h1>可关闭警告框</h1>
+            <p>为警告框添加一个可选的 <code>.ks-alert-dismissible</code> 类和一个关闭按钮。</p>
+            <div>
+                <div class="ks-alert ks-alert-danger ks-alert-dismissible">
+                  <a href="javascript:void(0)" class="close"><span class="icon icon-close-20"></span></a>
+                  删除失败，不能删除运行中的主机！
+                </div>
+            </div>
+            <pre><code class="hljs cs">
+                &lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">"ks-alert ks-alert-danger ks-alert-dismissible"</span> &gt;
+                  &lt;a href=<span class="hljs-string">"javascript:void(0)"</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">"close"</span> &gt;&lt;span <span class="hljs-keyword">class</span>=<span class="hljs-string">"icon icon-close-20"</span>&gt;&lt;/span&gt;&lt;/a&gt;
+                  删除失败，不能删除运行中的主机！
+                &lt;/div&gt;
+            </code></pre>
+        </div>
+    </section>
+
+    <section id="dialog">
+        <h1>模态框</h1>
+        <h2>正常模态框</h2>
+        <div class="container">
+            <p>宽度为<code>770px</code>。</p>
+            <div class="ksc-modal-section">
+                <div class="ks-modal">
+                      <div class="ks-modal-dialog">
+                        <div class="ks-modal-content">
+                          <div class="ks-modal-header">
+                            <a href="javascript:void(0)" class="close">
+                                <span class="icon icon-close-20"></span>
+                            </a>
+                            <h2 class="ks-modal-title">对话框标题</h2>
+                          </div>
+                          <div class="ks-modal-body h3">
+                            <p>对话框内容</p>
+                          </div>
+                          <div class="ks-modal-footer">
+                            <button type="button" class="ks-btn ks-btn-primary">确定</button>
+                            <button type="button" class="ks-btn ks-btn-default">关闭</button>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <pre><code class="html hljs xml">
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal"</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-dialog"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-content"</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-header"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0)"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"close"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-close-20"</span> &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-title"</span>&gt;</span>对话框标题<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-body h3"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>对话框内容<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-footer"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btn-primary"</span>&gt;</span>确定<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btn-default"</span>&gt;</span>关闭<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            </code></pre>
+        </div>
+        <h2>小型模态框</h2>
+        <div class="container">
+            <p>为模态框添加一个可选的 <code>.ks-modal-sm</code> 类，可以设置模态框的宽度为<code>480px</code>。</p>
+            <div class="ksc-modal-section">
+                <div class="ks-modal ks-modal-sm">
+                      <div class="ks-modal-dialog">
+                        <div class="ks-modal-content">
+                          <div class="ks-modal-header">
+                            <a href="javascript:void(0)" class="close">
+                                <span class="icon icon-close-20"></span>
+                            </a>
+                            <h2 class="ks-modal-title">对话框标题</h2>
+                          </div>
+                          <div class="ks-modal-body h3">
+                            <p>对话框内容</p>
+                          </div>
+                          <div class="ks-modal-footer">
+                            <button type="button" class="ks-btn ks-btn-primary">确定</button>
+                            <button type="button" class="ks-btn ks-btn-default">关闭</button>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <pre><code class="html hljs xml">
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal ks-modal-sm"</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-dialog"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-content"</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-header"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0)"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"close"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-close-20"</span> &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-title"</span>&gt;</span>对话框标题<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-body h3"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>对话框内容<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-footer"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btn-primary"</span>&gt;</span>确定<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btn-default"</span>&gt;</span>关闭<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            </code></pre>
+        </div>
+        <h2>中型模态框</h2>
+        <div class="container">
+            <p>为模态框添加一个可选的 <code>.ks-modal-md</code> 类，可以设置模态框的宽度为<code>868px</code>。</p>
+            <div class="ksc-modal-section">
+                <div class="ks-modal ks-modal-md">
+                      <div class="ks-modal-dialog">
+                        <div class="ks-modal-content">
+                          <div class="ks-modal-header">
+                            <a href="javascript:void(0)" class="close">
+                                <span class="icon icon-close-20"></span>
+                            </a>
+                            <h2 class="ks-modal-title">对话框标题</h2>
+                          </div>
+                          <div class="ks-modal-body h3">
+                            <p>对话框内容</p>
+                          </div>
+                          <div class="ks-modal-footer">
+                            <button type="button" class="ks-btn ks-btn-primary">确定</button>
+                            <button type="button" class="ks-btn ks-btn-default">关闭</button>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <pre><code class="html hljs xml">
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal ks-modal-md"</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-dialog"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-content"</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-header"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0)"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"close"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-close-20"</span> &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-title"</span>&gt;</span>对话框标题<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-body h3"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>对话框内容<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-footer"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btn-primary"</span>&gt;</span>确定<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btn-default"</span>&gt;</span>关闭<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            </code></pre>
+        </div>
+        <h2>巨型模态框</h2>
+        <div class="container">
+            <p>为模态框添加一个可选的 <code>.ks-modal-lg</code> 类，可以设置模态框的宽度为<code>1000px</code>。</p>
+            <div class="ksc-modal-section">
+                <div class="ks-modal ks-modal-lg">
+                      <div class="ks-modal-dialog">
+                        <div class="ks-modal-content">
+                          <div class="ks-modal-header">
+                            <a href="javascript:void(0)" class="close">
+                                <span class="icon icon-close-20"></span>
+                            </a>
+                            <h2 class="ks-modal-title">对话框标题</h2>
+                          </div>
+                          <div class="ks-modal-body h3">
+                            <p>对话框内容</p>
+                          </div>
+                          <div class="ks-modal-footer">
+                            <button type="button" class="ks-btn ks-btn-primary">确定</button>
+                            <button type="button" class="ks-btn ks-btn-default">关闭</button>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <pre><code class="html hljs xml">
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal ks-modal-lg"</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-dialog"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-content"</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-header"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0)"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"close"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-close-20"</span> &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-title"</span>&gt;</span>对话框标题<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-body h3"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>对话框内容<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-modal-footer"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btn-primary"</span>&gt;</span>确定<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btn-default"</span>&gt;</span>关闭<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            </code></pre>
+        </div>
+    </section>
+
+    <section id="icon">
+        <h1>图标</h1>
+        <div class="container" style="font-size:20px;">
+            <ul class="list-unstyled">
+                <li class="item"><i class="icon icon-i-9"></i></li>
+                <li class="item"><i class="icon icon-right2-9"></i></li>
+                <li class="item"><i class="icon icon-right-9"></i></li>
+                <li class="item"><i class="icon icon-question-9"></i></li>
+                <li class="item"><i class="icon icon-exclam-9"></i></li>
+                <li class="item"><i class="icon icon-phone-32"></i></li>
+                <li class="item"><i class="icon icon-message-32"></i></li>
+                <li class="item"><i class="icon icon-strategy-32"></i></li>
+                <li class="item"><i class="icon icon-lock-32"></i></li>
+                <li class="item"><i class="icon icon-logo-32"></i></li>
+                <li class="item"><i class="icon icon-cloud-idc-16"></i></li>
+                <li class="item"><i class="icon icon-order-need-16"></i></li>
+                <li class="item"><i class="icon icon-property-maintain-16"></i></li>
+                <li class="item"><i class="icon icon-property-mgr-16"></i></li>
+                <li class="item"><i class="icon icon-security-manager-16"></i></li>
+                <li class="item"><i class="icon icon-cloud-security-l6"></i></li>
+                <li class="item"><i class="icon icon-alarm-manager-16"></i></li>
+                <li class="item"><i class="icon icon-cloud-server-16"></i></li>
+                <li class="item"><i class="icon icon-instance-group-16"></i></li>
+                <li class="item"><i class="icon icon-monitor-16"></i></li>
+                <li class="item"><i class="icon icon-content-transform-16"></i></li>
+                <li class="item"><i class="icon icon-db-16"></i></li>
+                <li class="item"><i class="icon icon-point-video-16"></i></li>
+                <li class="item"><i class="icon icon-hodtoop-16"></i></li>
+                <li class="item"><i class="icon icon-game-16"></i></li>
+                <li class="item"><i class="icon icon-cloud-video-16"></i></li>
+                <li class="item"><i class="icon icon-switch-16"></i></li>
+                <li class="item"><i class="icon icon-detail-16"></i></li>
+                <li class="item"><i class="icon icon-shrink-16"></i></li>
+                <li class="item"><i class="icon icon-expand-16"></i></li>
+                <li class="item"><i class="icon icon-key-16"></i></li>
+                <li class="item"><i class="icon icon-click-16"></i></li>
+                <li class="item"><i class="icon icon-clock-16"></i></li>
+                <li class="item"><i class="icon icon-smile-16"></i></li>
+                <li class="item"><i class="icon icon-add-16"></i></li>
+                <li class="item"><i class="icon icon-voucher-16"></i></li>
+                <li class="item"><i class="icon icon-order-16"></i></li>
+                <li class="item"><i class="icon icon-user-info-16"></i></li>
+                <li class="item"><i class="icon icon-contact-16"></i></li>
+                <li class="item"><i class="icon icon-voice-16"></i></li>
+                <li class="item"><i class="icon icon-massage-16"></i></li>
+                <li class="item"><i class="icon icon-bill-16"></i></li>
+                <li class="item"><i class="icon icon-account-16"></i></li>
+                <li class="item"><i class="icon icon-set-16"></i></li>
+                <li class="item"><i class="icon icon-user-overview-16"></i></li>
+                <li class="item"><i class="icon icon-cost-16"></i></li>
+                <li class="item"><i class="icon icon-table-16"></i></li>
+                <li class="item"><i class="icon icon-user-16"></i></li>
+                <li class="item"><i class="icon icon-calculate-16"></i></li>
+                <li class="item"><i class="icon icon-user-safe-16"></i></li>
+                <li class="item"><i class="icon icon-dns-16"></i></li>
+                <li class="item"><i class="icon icon-network-16"></i></li>
+                <li class="item"><i class="icon icon-store-16"></i></li>
+                <li class="item"><i class="icon icon-control-16"></i></li>
+                <li class="item"><i class="icon icon-firewall-16"></i></li>
+                <li class="item"><i class="icon icon-more-16"></i></li>
+                <li class="item"><i class="icon icon-copy-16"></i></li>
+                <li class="item"><i class="icon icon-video-16"></i></li>
+                <li class="item"><i class="icon icon-analyse-16"></i></li>
+                <li class="item"><i class="icon icon-vpc-16"></i></li>
+                <li class="item"><i class="icon icon-safe-16"></i></li>
+                <li class="item"><i class="icon icon-home-16"></i></li>
+                <li class="item"><i class="icon icon-ip-16"></i></li>
+                <li class="item"><i class="icon icon-loadblance-16"></i></li>
+                <li class="item"><i class="icon icon-rds-16"></i></li>
+                <li class="item"><i class="icon icon-cache-16"></i></li>
+                <li class="item"><i class="icon icon-content-16"></i></li>
+                <li class="item"><i class="icon icon-physical-16"></i></li>
+                <li class="item"><i class="icon icon-webcast-16"></i></li>
+                <li class="item"><i class="icon icon-vm-16"></i></li>
+                <li class="item"><i class="icon icon-forbid-20"></i></li>
+                <li class="item"><i class="icon icon-enterprise-20"></i></li>
+                <li class="item"><i class="icon icon-stop-monitor-20"></i></li>
+                <li class="item"><i class="icon icon-modify-contant-20"></i></li>
+                <li class="item"><i class="icon icon-cancle-monitor-20"></i></li>
+                <li class="item"><i class="icon icon-export-20"></i></li>
+                <li class="item"><i class="icon icon-start-monitor-20"></i></li>
+                <li class="item"><i class="icon icon-cancle-monitor-16"></i></li>
+                <li class="item"><i class="icon icon-stop-16"></i></li>
+                <li class="item"><i class="icon icon-conf-20"></i></li>
+                <li class="item"><i class="icon icon-package-20"></i></li>
+                <li class="item"><i class="icon icon-break-20"></i></li>
+                <li class="item"><i class="icon icon-covert-20"></i></li>
+                <li class="item"><i class="icon icon-ssh-key-20"></i></li>
+                <li class="item"><i class="icon icon-create-20"></i></li>
+                <li class="item"><i class="icon icon-relate-20"></i></li>
+                <li class="item"><i class="icon icon-more-20"></i></li>
+                <li class="item"><i class="icon icon-unbind-20"></i></li>
+                <li class="item"><i class="icon icon-bindwidth-20"></i></li>
+                <li class="item"><i class="icon icon-time-20"></i></li>
+                <li class="item"><i class="icon icon-modify-20"></i></li>
+                <li class="item"><i class="icon icon-delete-20"></i></li>
+                <li class="item"><i class="icon icon-expand-20"></i></li>
+                <li class="item"><i class="icon icon-shink-20"></i></li>
+                <li class="item"><i class="icon icon-edit-20"></i></li>
+                <li class="item"><i class="icon icon-lock-20"></i></li>
+                <li class="item"><i class="icon icon-down-10"></i></li>
+                <li class="item"><i class="icon icon-up-10"></i></li>
+                <li class="item"><i class="icon icon-close-20"></i></li>
+                <li class="item"><i class="icon icon-export-old-20"></i></li>
+                <li class="item"><i class="icon icon-pause-20"></i></li>
+                <li class="item"><i class="icon icon-monit-20"></i></li>
+                <li class="item"><i class="icon icon-start-20"></i></li>
+                <li class="item"><i class="icon icon-set-20"></i></li>
+                <li class="item"><i class="icon icon-update-20"></i></li>
+                <li class="item"><i class="icon icon-refresh-20"></i></li>
+                <li class="item"><i class="icon icon-search-20"></i></li>
+                <li class="item"><i class="icon icon-cart-20"></i></li>
+                <li class="item"><i class="icon icon-restart-20"></i></li>
+
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+
+    </section>
+
+    <section id="btn">
+        <h1>按钮</h1>
+        <ul class="list list-unstyled">
+            <li class="item">
+                <button class="ks-btn ks-btn-default">默 认</button>
+            </li>
+            <li class="item">
+                <button class="ks-btn ks-btn-primary">主 要</button>
+            </li>
+            <li class="item">
+                <button class="ks-btn ks-btn-warnning">警 告</button>
+            </li>
+            <li class="item">
+                <button class="ks-btn ks-btn-default-disabled">默认禁用</button>
+            </li>
+            <li class="item">
+                <button class="ks-btn ks-btn-primary-disabled">主要禁用</button>
+            </li>
+            <li class="item">
+                <button class="ks-btn ks-btn-warnning-disabled">警告禁用</button>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+        <pre><code class="html hljs xml">
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btn-default"</span>&gt;</span>默 认<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btn-primary"</span>&gt;</span>主 要<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btn-warnning"</span>&gt;</span>警 告<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btn-default-disabled"</span>&gt;</span>默认禁用<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btn-primary-disabled"</span>&gt;</span>主要禁用<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btn-warnning-disabled"</span>&gt;</span>警告禁用<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        </code></pre>
+        <div class="container">
+            <button class="ks-btn ks-btn-default ks-btn-refresh">
+                <i class="icon icon-refresh-20"></i>
+            </button>
+        </div>
+        <pre><code class="html hljs xml">
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btn-default ks-btn-refresh"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-refresh-20"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        </code></pre>
+    </section>
+
+    <section id="btn-group">
+
+        <h1>按钮组</h1>
+        <div class="container">
+            <div class="ks-btns">
+              <button type="button" class="ks-btn  ks-btns-option ks-btns-active">1核</button>
+              <button type="button" class="ks-btn ks-btns-option">2核</button>
+              <button type="button" class="ks-btn ks-btns-option">4核</button>
+              <button type="button" class="ks-btn ks-btns-option">8核</button>
+              <button type="button" class="ks-btn ks-btns-option">16核</button>
+              <button type="button" class="ks-btn ks-btns-option">24核</button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="ks-btns">
+              <button type="button" class="ks-btn ks-btns-option">1G</button>
+              <button type="button" class="ks-btn ks-btns-option ks-btns-active">2G</button>
+              <button type="button" class="ks-btn ks-btns-option">4G</button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="ks-btns">
+              <button type="button" class="ks-btn ks-btns-option">1月</button>
+              <button type="button" class="ks-btn ks-btns-option">3月</button>
+              <button type="button" class="ks-btn ks-btns-option">6月</button>
+              <button type="button" class="ks-btn ks-btns-option">9月</button>
+              <button type="button" class="ks-btn ks-btns-option ks-btns-active">1年</button>
+              <button type="button" class="ks-btn ks-btns-option">2年</button>
+              <button type="button" class="ks-btn ks-btns-option">3年</button>
+            </div>
+        </div>
+        <pre><code class="html hljs xml">
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btns"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btns-option"</span>&gt;</span>1月<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btns-option"</span>&gt;</span>3月<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btns-option"</span>&gt;</span>6月<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btns-option"</span>&gt;</span>9月<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btns-option ks-btns-active"</span>&gt;</span>1年<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btns-option"</span>&gt;</span>2年<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btns-option"</span>&gt;</span>3年<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </code></pre>
+        <div class="container">
+            <div class="ks-btns">
+              <button type="button" class="ks-btn ks-btns-option ks-btns-operation"><i class="icon icon-cart-20"></i>查看主账号</button>
+            </div>
+        </div>
+        <pre><code class="html hljs xml">
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btns"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btns-option ks-btns-operation"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-cart-20"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>查看主账号<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </code></pre>
+        <div class="container">
+            <div class="ks-btns">
+              <button type="button" class="ks-btn ks-btns-option ks-btns-operation"><i class="icon icon-cart-20"></i>默认</button>
+              <button type="button" class="ks-btn ks-btns-option ks-btns-operation"><i class="icon icon-start-20"></i>悬停</button>
+              <button type="button" class="ks-btn ks-btns-option ks-btns-operation ks-btns-operation-disabled"><i class="icon icon-pause-20"></i>禁用</button>
+              <button type="button" class="ks-btn ks-btns-option ks-btns-operation"><i class="icon icon-restart-20"></i>默认</button>
+            </div>
+        </div>
+        <pre><code class="html hljs xml">
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btns"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btns-option ks-btns-operation"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-cart-20"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>默认<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btns-option ks-btns-operation"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-start-20"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>悬停<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btns-option ks-btns-operation ks-btns-operation-disabled"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-pause-20"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>禁用<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-btns-option ks-btns-operation"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-restart-20"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>默认<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </code></pre>
+    </section>
+
+    <section id="droplist">
+        <h1>下拉菜单</h1>
+        <div class="container">
+            <ul class="list-inline">
+                <li>
+                    <ul class="ks-dropdown-menu">
+                        <li><a href="javascript:void(0);">已关闭</a></li>
+                        <li class="active"><a href="javascript:void(0);">运行中</a></li>
+                        <li><a href="javascript:void(0);">已停用</a></li>
+                        <li><a href="javascript:void(0);">升级失败</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="ks-dropdown-menu ks-dropdown-menu-edit">
+                        <li class="disabled"><label><input disabled="disabled" checked="checked" type="checkbox">主机名称</label></li>
+                        <li class="active"><label><input checked="checked" type="checkbox">IP地址</label></li>
+                        <li><label><input checked="checked" type="checkbox">状态</label></li>
+                        <li><label><input checked="checked" type="checkbox">监控</label></li>
+                        <li><label><input checked="checked" type="checkbox">主机类型</label></li>
+                        <li><label><input type="checkbox">主机配置</label></li>
+                        <li><label><input type="checkbox">镜像名称</label></li>
+                        <li><label><input type="checkbox">防火墙</label></li>
+                        <li><label><input type="checkbox">消费方式</label></li>
+                        <li><label><input checked="checked" type="checkbox">到期时间</label></li>
+                        <li><label><input type="checkbox">产品类型</label></li>
+                        <li class="disabled"><label><input disabled="disabled" checked="checked" type="checkbox">操作</label></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <pre><code class="html hljs xml">
+            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-dropdown-menu"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>已关闭<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"active"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>运行中<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>已停用<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>升级失败<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-dropdown-menu ks-dropdown-menu-edit"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"disabled"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">"disabled"</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">"checked"</span>&gt;</span>主机名称<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"active"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">"checked"</span>&gt;</span>IP地址<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">"checked"</span>&gt;</span>状态<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">"checked"</span>&gt;</span>监控<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">"checked"</span>&gt;</span>主机类型<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>&gt;</span>主机配置<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>&gt;</span>镜像名称<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>&gt;</span>防火墙<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>&gt;</span>消费方式<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">"checked"</span>&gt;</span>到期时间<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>&gt;</span>产品类型<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"disabled"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">"disabled"</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">"checked"</span>&gt;</span>操作<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+        </code></pre>
+    </section>
+
+    <section id="dropdown">
+        <h1>下拉框</h1>
+        <div class="container">
+            <ul class="list-inline" style="margin-bottom: 120px;">
+                <li>
+                    <div class="ks-dropdown">
+                        <button type="button" class="ks-btn ks-dropdown-text">Default<span class="ks-caret"></span></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="ks-dropdown">
+                        <button type="button" class="ks-btn ks-dropdown-text">10行<span class="ks-caret"></span></button>
+                        <ul class="ks-dropdown-menu">
+                            <li><a href="javascript:void(0);">20行</a></li>
+                            <li><a href="javascript:void(0);">30行</a></li>
+                            <li><a href="javascript:void(0);">50行</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="ks-dropdown">
+                        <button type="button" class="ks-btn ks-dropdown-text">Server 2008 R2 Datacenter 32英文版<span class="ks-caret"></span></button>
+                        <ul class="ks-dropdown-menu">
+                            <li class="active"><a href="javascript:void(0);">云物理主机</a></li>
+                            <li><a href="javascript:void(0);">关系型数据库</a></li>
+                            <li><a href="javascript:void(0);">缓存服务</a></li>
+                            <li><a href="javascript:void(0);">内容与传输</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <pre><code class="html hljs xml">
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-dropdown"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-dropdown-text"</span>&gt;</span>Default<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-caret"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-dropdown"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-dropdown-text"</span>&gt;</span>10行<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-caret"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-dropdown-menu"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>20行<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>30行<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>50行<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-dropdown"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-dropdown-text"</span>&gt;</span>Server 2008 R2 Datacenter 32英文版<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-caret"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-dropdown-menu"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"active"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>云物理主机<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>关系型数据库<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>缓存服务<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>内容与传输<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </code></pre>
+    </section>
+
+    <section id="pager">
+        <h1>翻页</h1>
+        <div class="container">
+            <div class="ks-btns-page">
+                <div class="pager">
+                    <a href="javascript:void(0);" class="prev"><span class="prev-caret"></span></a>
+                    <a class="ellipsis">...</a>
+                    <a href="javascript:void(0);">11</a>
+                    <a href="javascript:void(0);">12</a>
+                    <a href="javascript:void(0);">13</a>
+                    <a class="active" href="javascript:void(0);">14</a>
+                    <a class="ellipsis">...</a>
+                    <a href="javascript:void(0);" class="next"><span class="next-caret"></span></a>
+                </div>
+                <span class="text">每页</span>
+                <div class="ks-dropdown">
+                    <button type="button" class="ks-btn ks-dropdown-text">10行<span class="ks-caret"></span></button>
+                    <ul class="ks-dropdown-menu">
+                        <li><a href="javascript:void(0);">20行</a></li>
+                        <li><a href="javascript:void(0);">30行</a></li>
+                        <li><a href="javascript:void(0);">50行</a></li>
+                    </ul>
+                </div>
+                <span class="text">共 40 条</span>
+            </div>
+        </div>
+        <pre><code class="html hljs xml">
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btns-page"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pager"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"prev"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"prev-caret"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ellipsis"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>11<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>12<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>13<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"active"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>14<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ellipsis"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"next"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"next-caret"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text"</span>&gt;</span>每页<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-dropdown"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-btn ks-dropdown-text"</span>&gt;</span>10行<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-caret"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-dropdown-menu"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>20行<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>30行<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>50行<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text"</span>&gt;</span>共40条<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </code></pre>
+    </section>
+
+    <section id="input">
+        <h1>输入框</h1>
+        <div class="container">
+            <ul class="list-inline">
+                <li>
+                    <input class="ks-form-text" placeholder="提醒文字样式" type="text">
+                </li><li>
+                </li><li>
+                    <div class="ks-form-control">
+                        <input class="ks-form-text ks-form-text-warn" placeholder="错误状态" type="text">
+                        <span class="error"><i>!</i>验证码位数不正确</span>
+                    </div>
+                </li>
+            
+        </ul></div>
+        <div class="clearfix"></div>
+        <pre><code class="html hljs xml">
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-form-text"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"提醒文字样式"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-form-control"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-form-text ks-form-text-warn"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"错误状态"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"error"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>!<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>验证码位数不正确<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </code></pre>
+
+    </section>
+
+    <section id="search">
+        <h1>搜索框</h1>
+        <div class="container">
+            <div class="ks-form-search">
+                <input class="ks-form-text" placeholder="输入关键字" type="text">
+                <i class="icon icon-search-20"></i>
+            </div>
+        </div>
+        <pre><code class="html hljs xml">
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-form-search"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-form-text"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"输入关键字"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-search-20"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </code></pre>
+
+    </section>
+
+    <section id="drag">
+        <h1>拖动条</h1>
+        <div class="container">
+            <ul class="list-inline">
+                <li>
+                    <div class="ks-drag" style="margin-left:100px;">
+                        <div class="ks-drag-box">
+                            <span class="left-text">0 G</span>
+                            <div class="progress" style="width:50%;">
+                            </div>
+                            <div class="slider">
+                                <div class="line"></div>
+                            </div>
+                            <span class="right-text">50 G</span>
+                        </div>
+                        <input class="ks-form-text" type="text">
+                        <span class="text">G</span>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+        <pre><code class="html hljs xml">
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-drag"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-drag-box"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"left-text"</span>&gt;</span>0 G<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"progress"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width:50%;"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"slider"</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"line"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"right-text"</span>&gt;</span>50 G<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-form-text"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text"</span>&gt;</span>G<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </code></pre>
+
+    </section>
+
+    <section id="control">
+        <h1>小控件</h1>
+        <div class="container">
+            <ul class="list-inline">
+                <li>
+                    <div class="ks-ctrl-collapse">
+                        <div class="ks-ctrl-collapse-down"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="ks-ctrl-collapse-hover">
+                        <div class="ks-ctrl-collapse-down"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="ks-ctrl-triangle">
+                        <div class="ks-ctrl-triangle-up-done"></div>
+                        <div class="ks-ctrl-triangle-down"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="ks-ctrl-triangle">
+                        <div class="ks-ctrl-triangle-up"></div>
+                        <div class="ks-ctrl-triangle-down-done"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <pre><code class="html hljs xml">
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-ctrl-collapse"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-ctrl-collapse-down"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-ctrl-collapse-hover"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-ctrl-collapse-down"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-ctrl-triangle"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-ctrl-triangle-up-done"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-ctrl-triangle-down"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-ctrl-triangle"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-ctrl-triangle-up"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-ctrl-triangle-down-done"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </code></pre>
+    </section>
+
+    <section id="table">
+
+        <h1>表格</h1>
+        <table class="ks-table">
+            <thead>
+                <tr>
+                    <th><input type="checkbox">主机名称</th>
+                    <th>IP地址</th>
+                    <th>状态<div class="ks-ctrl-collapse"><div class="ks-ctrl-collapse-down"></div></div></th>
+                    <th>监控</th>
+                    <th>
+                        计费方式
+                        <div class="ks-ctrl-triangle">
+                            <div class="ks-ctrl-triangle-up-done"></div>
+                            <div class="ks-ctrl-triangle-down"></div>
+                        </div>
+                    </th>
+                    <th>到期时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox"><a href="javascript:void(0);">game-zgzg</a></td>
+                    <td>10.140.255.255（外）<br>10.140.255.255（内）</td>
+                    <td class="ks-td-status-closed">已关闭</td>
+                    <td><a href="javascript:void(0);">加入</a></td>
+                    <td>包年包月</td>
+                    <td>2015/12/30 12:00</td>
+                    <td><a href="javascript:void(0);">连接主机</a><a href="javascript:void(0);">续费</a></td>
+                </tr>
+                <tr class="active">
+                    <td><input checked="checked" type="checkbox"><a href="javascript:void(0);">game-zgzg</a></td>
+                    <td>10.140.255.255（外）</td>
+                    <td class="ks-td-status-runing">运行中</td>
+                    <td class="ks-td-icon-size20"><i class="icon icon-monit-20"></i></td>
+                    <td>包年包月</td>
+                    <td>2015/12/30 12:00</td>
+                    <td><a href="javascript:void(0);">连接主机</a><a href="javascript:void(0);">续费</a></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"><a href="javascript:void(0);">game-zgzg</a></td>
+                    <td>10.140.255.255（外）<br>10.140.255.255（内）</td>
+                    <td class="ks-td-status-stoped">已停用</td>
+                    <td><a href="javascript:void(0);">加入</a></td>
+                    <td>包年包月</td>
+                    <td>2015/12/30 12:00</td>
+                    <td><a href="javascript:void(0);">连接主机</a><a href="javascript:void(0);">续费</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <pre><code class="html hljs xml">
+            <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-table"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>&gt;</span>主机名称<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>IP地址<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>状态<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-ctrl-collapse"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-ctrl-collapse-down"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>监控<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>
+                            计费方式
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-ctrl-triangle"</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-ctrl-triangle-up-done"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-ctrl-triangle-down"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>到期时间<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>操作<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>game-zgzg<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>10.140.255.255（外）<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span>10.140.255.255（内）<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-td-status-closed"</span>&gt;</span>已关闭<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>加入<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>包年包月<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>2015/12/30 12:00<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>连接主机<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>续费<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"active"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">"checked"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>game-zgzg<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>10.140.255.255（外）<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span>10.140.255.255（内）<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-td-status-runing"</span>&gt;</span>运行中<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-td-icon-size20"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-monit-20"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>包年包月<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>2015/12/30 12:00<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>连接主机<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>续费<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>game-zgzg<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>10.140.255.255（外）<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span>10.140.255.255（内）<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-td-status-stoped"</span>&gt;</span>已停用<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>加入<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>包年包月<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>2015/12/30 12:00<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>连接主机<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>续费<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+        </code></pre>
+    </section>
+
+    <section id="threelevelmenu">
+        <h1>三级菜单</h1>
+        <div class="container">
+            <div class="ks-threelevel-menu">
+                <span class="title">我的空间</span>
+                <ul>
+                    <li><i class="icon icon-home-16"></i>空间概览</li>
+                    <li class="active"><i class="icon icon-home-16"></i>行业案例资料</li>
+                    <li><i class="icon icon-home-16"></i>产品说明文档</li>
+                    <li><i class="icon icon-home-16"></i>版本记录</li>
+                    <li><i class="icon icon-home-16"></i>控制台产品概览</li>
+                </ul>
+            </div>
+        </div>
+        <pre><code class="html hljs xml">
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-threelevel-menu"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title"</span>&gt;</span>我的空间<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-home-16"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>空间概览<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"active"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-home-16"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>行业案例资料<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-home-16"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>产品说明文档<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-home-16"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>版本记录<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-home-16"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>控制台产品概览<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </code></pre>
+    </section>
+
+    <section id="stepper">
+        <h1>分步菜单</h1>
+        <div class="container">
+            <div class="ks-stepper">
+                <ul>
+                    <li><span>1</span>选择配置</li>
+                    <li class="active"><span>2</span>设置网络和镜像</li>
+                    <li><span>3</span>设置基本信息</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <pre><code class="html hljs xml">
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-stepper"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>选择配置<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"active"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>设置网络和镜像<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>设置基本信息<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </code></pre>
+    </section>
+
+
+    <section id="spinner">
+        <h1>增减按钮</h1>
+        <div class="container">
+            <div class="ks-spinner">
+                <button>-</button>
+                <input class="ks-form-text" value="3" type="text">
+                <button>+</button>
+            </div>
+
+            <div class="ks-spinner">
+                <button class="disabled">-</button>
+                <input class="ks-form-text" value="3" type="text">
+                <button>+</button>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <pre><code class="html hljs xml">
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-spinner"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>  <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-form-text"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"3"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-spinner"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"disabled"</span>&gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>  <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-form-text"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"3"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </code></pre>
+    </section>
+    <section id="tabbutton">
+        <h1>标签页按钮</h1>
+        <div class="ks-tab">
+            <div class="tab-head">
+                <div class="tab-btn active">策略</div><div class="tab-btn">访问密钥</div>
+            </div>
+            <div class="tab-body">
+                内容区
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <pre><code class="html hljs xml">
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ks-tab"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"tab-head"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"tab-btn active"</span>&gt;</span>策略<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"tab-btn"</span>&gt;</span>访问密钥<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"tab-body"</span>&gt;</span>
+                    内容区
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </code></pre>
+    </section>
+    <section id="frame-public-store">
+        <h1>公共存储</h1>
+        <div class="clearfix"></div>
+        <pre>            <code class="common scripting all hljs javascript">
+                <span class="hljs-comment">/*
+                    跨业务线存储
+                    可以跨域使用,实现业务线之间的通信
+                */</span>
+
+
+                <span class="hljs-comment">/*在框架上存储变量*/</span>
+                __ksStorage__.setValue(<span class="hljs-string">'hello'</span>, <span class="hljs-string">'hello new console!'</span>);
+
+                <span class="hljs-comment">/*在框架上获取变量*/</span>
+                __ksStorage__.getValue(<span class="hljs-string">'hello'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">key, value</span>)</span>{
+                    <span class="hljs-built_in">console</span>.log(key+<span class="hljs-string">':'</span>+value);  <span class="hljs-comment">//结果:  hello:"hello new console!"</span>
+                });
+
+                <span class="hljs-comment">/*在框架上删除变量*/</span>
+                __ksStorage__.delValue(<span class="hljs-string">'hello'</span>);
+
+                <span class="hljs-comment">/*获取框架基础中信息*/</span>
+                __ksStorage__.getBaseInfo(<span class="hljs-string">'userInfo'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+                    <span class="hljs-built_in">console</span>.log(data)
+                });
+            </code>
+        </pre>
+    </section>
+</div>
+
+<script src="%E9%87%91%E5%B1%B1%E4%BA%91%E6%8E%A7%E5%88%B6%E5%8F%B0_files/core.php" charset="utf-8" async="" type="text/javascript"></script><script type="text/javascript" src="%E9%87%91%E5%B1%B1%E4%BA%91%E6%8E%A7%E5%88%B6%E5%8F%B0_files/highlight.js"></script>
+<script type="text/javascript" src="%E9%87%91%E5%B1%B1%E4%BA%91%E6%8E%A7%E5%88%B6%E5%8F%B0_files/base.js"></script>
+<script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+</script>
+
+
+<div id="cnzz_stat_icon_1259225463"></div><script src="%E9%87%91%E5%B1%B1%E4%BA%91%E6%8E%A7%E5%88%B6%E5%8F%B0_files/q_stat.php"></script><iframe src="%E9%87%91%E5%B1%B1%E4%BA%91%E6%8E%A7%E5%88%B6%E5%8F%B0_files/publicStore.html" style="position: absolute; width: 1px; height: 1px; left: -9999px;"></iframe></body></html>
