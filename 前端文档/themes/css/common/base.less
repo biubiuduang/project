@@ -41,6 +41,9 @@
     color:#666666;
     font-family: "Microsoft Yahei","sans-serif";
   }
+  /***************************/
+  /***      iconfont       ***/
+  /***************************/
   @font-face {font-family: 'iconfont';
     src: url('../../font/iconfont.eot'); /* IE9*/
     src: url('../../font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -130,7 +133,20 @@
         content: "\e626";
       }
     }
+    &.iconfont-false-fill{
+      &:before{
+        content: "\e606";
+      }
+    }
+    &.iconfont-true-fill{
+      &:before{
+        content: "\e612";
+      }
+    }
   }
+  /***************************/
+  /***         文本        ***/
+  /***************************/
   .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{
     color: #333;
     font-family: inherit;
@@ -150,6 +166,68 @@
   }
   p{
     margin:0 0 10px;
+  }
+  /***************************/
+  /***        按钮         ***/
+  /***************************/
+  input[type="button"]{
+    &.btn{
+      -moz-user-select: none;
+      background-image: none;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.42857;
+      margin-bottom: 0;
+      outline: 0 none;
+      padding: 6px 32px;
+      text-align: center;
+      white-space: nowrap;
+      &.btn-default {
+        background-color: #fff;
+        border-color: #319cf1;
+        color: #319cf1;
+      }
+      &.btn-primary {
+        background-color: #289af4;
+        border-color: #289af4;
+        color: #fff;
+      }
+      &.btn-warning {
+        background-color: #ff8a00;
+        border-color: #ff8a00;
+        color: #fff;
+      }
+      &.btn-default-disabled {
+        background-color: #fff;
+        border-color: #d9d9d9;
+        color: #999;
+      }
+    }
+  }
+  input[type="text"]{
+    outline: none;
+    font-size: 14px;
+    line-height: 1.4;
+    width: 256px;
+    height:40px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    border:1px solid #999999;
+    margin:10px;
+    &.txt{
+      &.txt-default{
+        color:#333333;
+      }
+      &:focus,&.txt-check{
+        border:1px solid #0b79d0;
+      }
+      &.txt-warning{
+        border:1px solid #d83b3a;
+      }
+    }
   }
 }
 

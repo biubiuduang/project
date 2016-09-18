@@ -12,6 +12,7 @@
     <a href="#cssReset">CSS reset</a>
     <a href="#layout">排版</a>
     <a href="#icon">图标</a>
+    <a href="#button">按钮</a>
 </nav>
 <!-- 各个产品需求的内容区域展示 -->
 <div class="ctrl-main-container">
@@ -82,7 +83,38 @@
             <span class="iconfont iconfont-left"></span>
             <span class="iconfont iconfont-right"></span>
             <span class="iconfont iconfont-home"></span>
+            <span class="iconfont iconfont-false-fill"></span>
+            <span class="iconfont iconfont-true-fill"></span>
         </div>
+    </section>
+
+    <!-- 按钮 -->
+    <section id="button">
+        <h1>按钮</h1>
+        <div class="container">
+            <input type="button" class="btn btn-default" value="默认" />
+            <input type="button" class="btn btn-primary" value="主要" />
+            <input type="button" class="btn btn-warning" value="警告" />
+            <input type="button" class="btn btn-default-disabled" value="默认禁用" disabled="disabled" />
+        </div>
+        <code class="html">
+            <span class="hljs-tag">&lt;<span class="hljs-name">input type="button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-default"</span></span> value="默 认"<span class="hljs-tag"> /&gt;</span><br/>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input type="button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-primary"</span></span> value="主 要"<span class="hljs-tag"> /&gt;</span><br/>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input type="button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-warning"</span></span> value="警 告"<span class="hljs-tag"> /&gt;</span><br/>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input type="button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-default-disabled"</span></span> value="默认禁用"<span class="hljs-tag"> /&gt;</span>
+        </code>
+
+        <h1 style="text">输入框</h1>
+        <div class="container">
+            <input type="text" class="txt txt-default" value="默认输入框"><br/>
+            <input type="text" class="txt txt-check" value="被选中输入框"><br/>
+            <input type="text" class="txt txt-warning" value="报错输入框">
+        </div>
+        <code class="html">
+            <span class="hljs-tag">&lt;<span class="hljs-name">input type="text"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-default"</span></span> value="默 认"<span class="hljs-tag"> /&gt;</span><br/>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input type="text"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-primary"</span></span> value="主 要"<span class="hljs-tag"> /&gt;</span><br/>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input type="text"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-warning"</span></span> value="警 告"<span class="hljs-tag"> /&gt;</span>
+        </code>
     </section>
 </div>
 </body>
