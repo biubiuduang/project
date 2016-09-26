@@ -207,24 +207,44 @@
         <div class="container">
             <div class="xx-modal-section">
                 <div class="xx-modal">
-                    <div class="xx-modal-box">
+                    <div class="xx-modal-content">
                         <div class="xx-modal-header">
-                            <a class="close" href="javascript:void(0);">
+                            <a class="xx-modal-close" href="javascript:void(0);">
                                 <span class="iconfont iconfont-close"></span>
                             </a>
-                            <h2 class="title">对话框标题</h2>
+                            <h2 class="xx-modal-title">对话框标题</h2>
                         </div>
                         <div class="xx-modal-body h3">
                             <p>对话框内容</p>
                         </div>
                         <div class="xx-modal-footer">
-                            <input type="button" class="btn btn-primary" value="确定">
-                            <input type="button" class="btn btn-default close" value="取消">
+                            <input type="button" class="btn btn-primary" value="确 定">
+                            <input type="button" class="btn btn-default xx-modal-close" value="取 消">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <code class="html">
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> class=<span class="hljs-string">"xx-modal"</span> &gt;</span><br/>
+            &nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">div</span> class=<span class="hljs-string">"xx-modal-content"</span>&gt;</span><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">div</span> class=<span class="hljs-string">"xx-modal-header"</span>&gt;</span><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">a</span> class=<span class="hljs-string">"xx-modal-close"</span> href=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">span</span> class=<span class="hljs-string">"iconfont iconfont-close"</span> &gt;&lt;/<span class="hljs-string">span</span>&gt;</span><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt; <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">h2</span> class=<span class="hljs-string">"xx-modal-title"</span>&gt;</span>对话框标题<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt; <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">div</span> class=<span class="hljs-string">"xx-modal-body h3"</span>&gt;</span><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>对话框内容<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt; <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">div</span> class=<span class="hljs-string">"xx-modal-footer"</span>&gt;</span><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">input </span> type=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-primary"</span></span> value="确 定"<span class="hljs-tag"> /&gt;</span><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">input </span> type=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-default xx-modal-close"</span></span> value="取 消"<span class="hljs-tag"> /&gt;</span><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt; <br/>
+            &nbsp;&nbsp;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt; <br/>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt; <br/>
+        </code>
     </section>
 </div>
 </body>
