@@ -1,4 +1,7 @@
 @charset "utf-8";
+/********************************************/
+/*********** 公共参数与方法的集合  **********/
+/********************************************/
 html,
 body,
 div,
@@ -25,6 +28,9 @@ th,
 td {
   padding: 0;
   margin: 0;
+}
+a {
+  text-decoration: none;
 }
 table {
   border-collapse: collapse;
@@ -179,8 +185,23 @@ h3 {
 p {
   margin: 0 0 10px;
 }
+.text-primary {
+  color: #000000;
+}
+.text-muted {
+  color: #999999;
+}
+.text-showy {
+  color: #ff8a00;
+}
+.text-danger {
+  color: #ff0000;
+}
+.text-link {
+  color: #3288e9;
+}
 /***************************/
-/***        按钮         ***/
+/***       form元素      ***/
 /***************************/
 input[type="button"].btn {
   -moz-user-select: none;
@@ -199,12 +220,12 @@ input[type="button"].btn {
 }
 input[type="button"].btn.btn-default {
   background-color: #fff;
-  border-color: #319cf1;
-  color: #319cf1;
+  border-color: #3288e9;
+  color: #3288e9;
 }
 input[type="button"].btn.btn-primary {
-  background-color: #289af4;
-  border-color: #289af4;
+  background-color: #3288e9;
+  border-color: #3288e9;
   color: #fff;
 }
 input[type="button"].btn.btn-warning {
@@ -214,28 +235,96 @@ input[type="button"].btn.btn-warning {
 }
 input[type="button"].btn.btn-default-disabled {
   background-color: #fff;
-  border-color: #d9d9d9;
+  border-color: #999999;
   color: #999;
 }
 input[type="text"] {
   outline: none;
   font-size: 14px;
-  line-height: 1.4;
   width: 256px;
   height: 40px;
+  line-height: 40px;
   box-sizing: border-box;
   padding: 0 10px;
   border: 1px solid #999999;
   margin: 10px;
+  border-radius: 5px;
 }
 input[type="text"].txt.txt-default {
   color: #333333;
 }
 input[type="text"].txt:focus,
 input[type="text"].txt.txt-check {
-  border: 1px solid #0b79d0;
+  border-color: #0b79d0;
 }
 input[type="text"].txt.txt-warning {
-  border: 1px solid #d83b3a;
+  border-color: #d83b3a;
+}
+input[type="text"].txt.txt-disable {
+  border-color: #d9d9d9;
+  background-color: #999999;
+}
+input[type="radio"].radio {
+  opacity: 0;
+  line-height: 24px;
+}
+input[type="radio"].radio + .radio {
+  font-family: "iconfont" !important;
+  font-size: 18px;
+}
+input[type="radio"].radio + .radio:before {
+  color: #0b79d0;
+  content: "\e611";
+  margin-right: 10px;
+}
+input[type="radio"].radio:checked + .radio:before {
+  content: "\e601";
+}
+input[type="checkbox"].checkbox {
+  opacity: 0;
+  line-height: 24px;
+}
+input[type="checkbox"].checkbox + .checkbox {
+  font-family: "iconfont" !important;
+  font-size: 18px;
+}
+input[type="checkbox"].checkbox + .checkbox:before {
+  color: #0b79d0;
+  content: "\e602";
+  margin-right: 10px;
+}
+input[type="checkbox"].checkbox:checked + .checkbox:before {
+  content: "\e604";
+}
+select {
+  outline: none;
+  padding: 0 24px 0 10px;
+  -moz-appearance: none;
+  -ms-progress-appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid #eeeeee;
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  height: 30px;
+}
+select option {
+  padding: 0 24px 0 10px;
+}
+select + .iconfont-bottom {
+  position: relative;
+  font-size: 14px;
+  left: -30px;
+  z-index: 1;
+}
+/**************************/
+/********   模态框   ******/
+/**************************/
+.xx-modal-box {
+  width: 700px;
+  padding: 20px;
+}
+.xx-modal-box .xx-modal-header {
+  border-bottom: 1px solid #999999;
 }
 /* css reset  */

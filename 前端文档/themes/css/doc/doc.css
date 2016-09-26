@@ -23,6 +23,8 @@ nav {
   padding: 0 10px;
   position: fixed;
   float: left;
+  left: 0;
+  top: 0;
   background-color: #ffffff;
   border: 1px solid #999999;
 }
@@ -67,6 +69,12 @@ section code.html {
 section code .hljs-tag {
   color: #ffffff;
 }
+section code .hljs-string {
+  color: #e6db74;
+}
 section code .hljs-name {
   color: #66d9ef;
+}
+section code .hljs-note {
+  color: #999999;
 }
