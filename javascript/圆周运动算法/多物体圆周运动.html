@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多物体 圆周运动</title>
+    <style type="text/css">
+        .box{
+            width: 1000px;
+            height: 500px;
+            border:1px solid #333333;
+            position: relative;
+        }
+        .circle{
+            width: 6px;
+            height: 6px;
+            background-color: #1f1f1f;
+            border-radius: 50%;
+            position: absolute;
+            left:50%;
+            top:50%;
+            margin-left:-3px;
+            margin-top:-3px;
+        }
+        .circle div{
+            width: 50px;
+            height: 80px;
+            border: 1px solid green;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <div class="circle">
+        <div style="background-color: red;">0</div>
+        <div style="background-color: yellow;">1</div>
+        <div style="background-color: green;">2</div>
+        <div style="background-color: blue;">3</div>
+    </div>
+</div>
+<div>
+    <input class="left" type="button" value="left" />
+    <input class="right" type="button" value="right" />
+</div>
+
+<script type="text/javascript" src="../../jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        //每个旋转的物体
+        var listObj = $(".circle div");
+        //旋转的个数
+        var len = listObj.length;
+        //设置半径为200;
+        var r = 200;
+
+        var timer=0;
+        var speed = 0;
+
+        var cR = 0;
+        var ccR = 0;
+
+        //初始化
+        listObj.each(function(){
+            var item = $(this);
+            item.css({
+                "top": Math.sin(360/len * item.index() * Math.PI / 180)*r,
+                "left": Math.cos(360/len * item.index() * Math.PI / 180)*r
+            });
+
+        });
+
+
+        //旋转函数
+        var rotate = function(){
+            listObj.each(function(){
+                var item = $(this);
+                ccR = 360/len * item.index() + speed;
+                console.log(ccR);
+                item.css({
+                    "top": Math.sin(ccR* Math.PI / 180)*r,
+                    "left": Math.cos(ccR* Math.PI / 180)*r
+                });
+
+
+            });
+        };
+        $(".left").click(function(){
+            clearInterval(timer);
+            timer = setInterval(function(){
+                speed ++;
+                if(speed % 360 == 0){
+                    speed = 0;
+                }
+
+                rotate();
+
+                if(ccR%90 === 0){
+                    clearInterval(timer);
+                }
+            },10);
+        });
+        $(".right").click(function(){
+            clearInterval(timer);
+            timer = setInterval(function(){
+                speed --;
+
+                if(speed % 360 == 0){
+                    speed = 0;
+                }
+
+                rotate();
+                if(ccR%90 === 0){
+                    clearInterval(timer);
+                }
+            },10);
+        });
+
+
+    })
+</script>
+</body>
+</html>

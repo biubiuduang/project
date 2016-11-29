@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>班级情况调查表</title>
+    <script type="text/javascript" src="../../jquery-1.7.2.min.js"></script>
+</head>
+<body>
+<input type="hidden" value="1000" class="name">
+<table width="1000" border="1">
+    <tr>
+        <td>ID</td>
+        <td>姓名</td>
+        <td>性别</td>
+        <td>年龄</td>
+        <td>班级</td>
+    </tr>
+    <tbody class="tbody">
+
+    </tbody>
+</table>
+<script type="text/javascript">
+    $(function(){
+        $.ajax({
+            type : "get",
+            //type : "post",
+            url : "ajax.html",
+            //url : "index.json",
+            data : {"name": $(".name").val(),"id":"2"},
+            /** 跨域 jsonp **/
+            dataType : "json",
+            /** 请求之前需要做什么 **/
+            beforeSend : function(){
+                alert("内容加载中.....");
+            },
+            success : function(data){
+                var box = "";
+                for(var i = 0 ; i < data.length ; i++){
+                    box += "<tr>"+
+                            "<td>"+ data[i].id +"</td>"+
+                            "<td>"+ data[i].name +"</td>"+
+                            "<td>"+ data[i].sex +"</td>"+
+                            "<td>"+ data[i].age +"</td>"+
+                            "<td>"+ data[i].class +"</td>"+
+                            "</tr>"
+                }
+                $(".tbody").append(box)
+            },
+            error : function(){
+                alert("加载失败,请重新重新加载");
+            },
+            /** 请求完成之后调用这个函数，无论成功或失败 **/
+            complete : function(){
+                alert("ajax请求结束");
+            }
+        })
+    })
+</script>
+</body>
+</html>

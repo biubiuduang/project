@@ -1,0 +1,193 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>分页JS代码</title>
+    <style type="text/css">
+        body{
+            text-align: center;
+        }
+        .paging {
+            padding: 40px 0;
+            text-align: center;
+        }
+        .paging a {
+            display: inline-block;
+            padding: 5px 10px;
+            border: 1px solid #e8e8e8;
+            color: #666666;
+            font-size: 0.875em;
+            margin: 0 2px;
+            text-decoration: none;
+        }
+        .paging a.link {
+            background-color: #0070b8;
+            color: #ffffff;
+        }
+        .paging a.unclick,.paging a.unclick:hover{background:none;border:1px solid #eee;color:#999;cursor:default;}
+
+        ul{
+            list-style: none;
+            margin: 0 auto;
+            text-align: center;
+            width: 1000px;
+        }
+        ul li{
+            width: 200px;
+            float: left;
+            border:1px solid #000000;
+            overflow: hidden;
+            white-space: normal;
+            text-overflow: ellipsis;
+        }
+        .news::after{
+            content:".";
+            height:0;
+            display: block;
+            clear: both;
+        }
+    </style>
+    <script type="text/javascript" src="../../../jquery-1.7.2.min.js"></script>
+</head>
+<body>
+<div class="news">
+    <ul>
+        <li class="img">图片</li>
+        <li class="title">标题</li>
+        <li class="cont">简介</li>
+        <li class="link">链接</li>
+    </ul>
+    <div class="news-box"></div>
+</div>
+<div class="paging" id="paging">
+
+</div>
+</body>
+<script type="text/javascript">
+    $.ajax({
+        type : "GET",
+        url : "content.json",
+        dateType : "json",
+        success : function(data){
+            var c = data.content.length;
+            setpaging(document.getElementsByClassName("paging")[0],c,1,data);
+        }
+
+    });
+    //container 容器，count 总页数 pagingindex 当前页数,data数据部分
+    function setpaging(container,count,pagingindex,data) {
+        var container = container;
+        var count = count;
+        var pagingindex = pagingindex;
+        var a = [];
+        var box = "";
+        for(var i = 0;i < data.content[pagingindex-1].t.length; i ++){
+            box += "<ul>"+
+                    "<li class='img'>"+data.content[pagingindex-1].t[i].image+"</li>"+
+                    "<li class='img'>"+data.content[pagingindex-1].t[i].title+"</li>"+
+                    "<li class='img'>"+data.content[pagingindex-1].t[i].cont+"</li>"+
+                    "<li class='img'>"+data.content[pagingindex-1].t[i].link+"</li>"+
+                    "</ul>"
+        }
+        $(".news-box").html(box);
+
+        //总页数少于10 全部显示,大于10 显示前3 后3 中间3 其余....
+
+        //当前页数为第一页的时候  上一页的样式要为白色
+        if (pagingindex == 1) {
+
+            a[a.length] = "<a href=\"#\" class=\"prev unclick\">< 上一页</a>";
+        } else {
+            //当前页数不是第一页的时候  上一页的样式为可点状态
+            a[a.length] = "<a href=\"#\" class=\"prev\">< 上一页</a>";
+        }
+        function setpagingList() {
+            if (pagingindex == i) {
+                a[a.length] = "<a href=\"#\" class=\"link\">" + i + "</a>";
+            } else {
+                a[a.length] = "<a href=\"#\">" + i + "</a>";
+            }
+        }
+
+
+        //总页数小于10
+        if (count <= 10) {
+            for (var i = 1; i <= count; i++) {
+                setpagingList(i);
+            }
+        }//总页数大于10页
+        else {
+            if (pagingindex <= 4) {
+                for (var i = 1; i <= 5; i++) {
+                    setpagingList();
+                }
+                a[a.length] = "...<a href=\"#\">" + count + "</a>";//...总页数
+            } else if (pagingindex >= count - 3) {
+                a[a.length] = "<a href=\"#\">1</a>...";
+                for (var i = count - 4; i <= count; i++) {
+                    setpagingList();
+                }
+            }
+            else { //当前页在中间部分
+                a[a.length] = "<a href=\"#\">1</a>...";
+                for (var i = pagingindex - 2; i <= pagingindex + 2; i++) {
+                    setpagingList();
+                }
+                a[a.length] = "...<a href=\"#\">" + count + "</a>";
+            }
+        }
+
+
+        //当前页为最大页的时候  要使下一页的样式变为白色  不能点击状态
+        if (pagingindex == count) {
+            a[a.length] = "<a href=\"#\" class=\"next unclick\">下一页 ></a>";
+        } else {
+            a[a.length] = "<a href=\"#\" class=\"next\">下一页 ></a>";
+        }
+
+        //向获取到的div中加入这些分页a链接
+        container.innerHTML = a.join("");
+
+
+
+        //事件点击
+        var pagingClick = function() {
+            var oAlink = container.getElementsByTagName("a");
+            var inx = pagingindex; //初始的页码
+
+            oAlink[0].onclick = function() { //点击上一页
+                if (inx == 1) {
+                    return false;
+                }
+                inx--;
+                setpaging(container,count,inx,data);
+                return false;
+            };
+
+
+            for (var i = 1; i < oAlink.length - 1; i++) { //点击页码
+                oAlink[i].onclick = function() {
+                    inx = parseInt(this.innerHTML);
+                    setpaging(container,count,inx,data);
+                    return false;
+                }
+            }
+
+
+            oAlink[oAlink.length - 1].onclick = function() { //点击下一页
+                if (inx == count) {
+                    return false;
+                }
+                inx++;
+                setpaging(container,count,inx,data);
+                return false;
+            }
+        } ()
+    }
+
+
+
+
+
+</script>
+</html>

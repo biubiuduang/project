@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .box{
+            width: 100px;
+            height: 100px;
+            border:1px solid #ff0000;
+        }
+    </style>
+    <!--[if IE 7]>
+        <style type="text/css">
+            .box{
+                background-color: #00A1CB;
+            }
+        </style>
+        <script type="text/javascript">
+            window.onload = function(){
+                alert("ie7");
+            }
+        </script>
+    <![endif]-->
+    <!--[if IE 8]>
+        <style type="text/css">
+            .box{
+                background-color:#9A4690;
+            }
+        </style>
+        <script type="text/javascript">
+            window.onload = function(){
+                alert("ie8");
+            }
+        </script>
+    <![endif]-->
+</head>
+<body>
+<div class="box"></div>
+
+<div>
+    <!--[if !IE]><!--> 除IE外都可识别 <!--<![endif]-->
+    <!--[if IE]> 所有的IE可识别 <![endif]-->
+    <!--[if IE 5.0]> 只有IE5.0可以识别 <![endif]-->
+    <!--[if IE 5]> 仅IE5.0与IE5.5可以识别 <![endif]-->
+    <!--[if gt IE 5.0]> IE5.0以及IE5.0以上版本都可以识别 <![endif]-->
+    <!--[if IE 6]> 仅IE6可识别 <![endif]-->
+    <!--[if lt IE 6]> IE6以及IE6以下版本可识别 <![endif]-->
+    <!--[if gte IE 6]> IE6以及IE6以上版本可识别 <![endif]-->
+    <!--[if IE 7]> 仅IE7可识别 <![endif]-->
+    <!--[if lt IE 7]> IE7以及IE7以下版本可识别 <![endif]-->
+    <!--[if gte IE 7]> IE7以及IE7以上版本可识别 <![endif]-->
+    <!--[if lte IE 6]>小于或等于IE6浏览器可识别<![endif]-->
+</div>
+
+
+<script type="text/javascript" src="../../jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        //定义全局变量集合
+        var superd = {};
+        //获取用户浏览器代理商
+        superd.u = navigator.userAgent;
+
+        //判断是否是ie 6 7 8 ,执行不同js
+        if(superd.u.indexOf("MSIE 6.0") > 0 || superd.u.indexOf("MSIE 7.0") > 0  || superd.u.indexOf("MSIE 8.0") > 0 ){
+            alert("低版本IE浏览器");
+        }else{
+            alert("非低版本IE浏览器");
+        }
+    })
+</script>
+</body>
+</html>

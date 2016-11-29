@@ -1,0 +1,205 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>APP下载</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100%;
+            margin:0;
+            padding:0;
+        }
+        #tips{
+            width: 100%;
+            margin:0;
+            padding: 0;
+        }
+        img{
+            width: 100%;
+        }
+    </style>
+    <script type="text/javascript" src="../../jquery-1.7.2.min.js"></script>
+</head>
+<body>
+<div id="tips">
+    <img id="ios_tips" class="wxtip tip_ios" style="display:none" >
+    <img id="android_tips" class="wxtip tip_android" style="display:none" >
+</div>
+<script>
+    $(function () {
+        var urlCode = window.location.search;
+        var androidImg = "";
+        var iosImg = "";
+        var androidUrl = "";
+        var iosUrl = "";
+        var allUrl = "";
+        var aurlIndex;
+        var iurlIndex;
+        var urlIndex;
+        var browser = {
+            versions: function() {
+                var u = navigator.userAgent, app = navigator.appVersion;
+                return {//移动终端浏览器版本信息
+                    trident: u.indexOf('Trident') > -1, //IE内核
+                    presto: u.indexOf('Presto') > -1, //opera内核
+                    webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), //是否为移动终端
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                    iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                    webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+                };
+            }(),
+            language: (navigator.browserLanguage || navigator.language).toLowerCase()
+        };
+
+        var urlPara = {
+            para: function(){
+                return {
+                    aurl : urlCode.indexOf("&aurl=") > -1,   //url是否包含android  app下载地址
+                    iurl : urlCode.indexOf("&iurl=") > -1,   //url是否包含ios  app下载地址
+                    url : urlCode.indexOf("&url=") > -1      //url通用下载地址
+                };
+            }()
+        };
+
+        //url 包含android和ios 下载地址
+        if(urlPara.para.aurl && urlPara.para.iurl){
+            aurlIndex = urlCode.match("&aurl=").index;                          //获取 &aurl= 的位置
+            iurlIndex = urlCode.match("&iurl=").index;                          //获取 &iurl= 的位置
+            androidImg = "img/weixin_android.png";             //微信中打开android的导图
+            iosImg = "img/weixin_ios.png";                     //微信中打开ios的导图
+            /**
+             * 以下获取APP下载的url
+             * */
+            if(aurlIndex < iurlIndex){
+                androidUrl = urlCode.substring((aurlIndex+6),iurlIndex).trim();
+                iosUrl = urlCode.substring(iurlIndex+6).trim();
+            }else{
+                iosUrl = urlCode.substring((iurlIndex+6),aurlIndex).trim();
+                androidUrl = urlCode.substring(aurlIndex+6).trim();
+            }
+        }
+        //通用url地址
+        else if(urlPara.para.url){
+            urlIndex = urlCode.match("&url=").index;
+            allUrl = urlCode.substring(urlIndex+5).trim();
+            androidImg = "img/weixin_android.png";             //微信中打开android的导图
+            iosImg = "img/weixin_ios.png";                     //微信中打开ios的导图
+        }
+        else{
+            //只含有android下载地址
+            if(urlPara.para.aurl){
+                androidImg = "img/weixin_android.png";
+                iosImg = "img/weixin_ios.png";
+                aurlIndex = urlCode.match("&aurl=").index;
+                androidUrl = urlCode.substring(aurlIndex+6).trim();
+            }
+            //只含有ios下载地址
+            else if(urlPara.para.iurl){
+                androidImg = "img/weixin_android.png";
+                iosImg = "img/weixin_ios.png";
+                iurlIndex = urlCode.match("&iurl=").index;
+                iosUrl = urlCode.substring(iurlIndex+6).trim();
+            }
+            //没有下载地址
+            else{
+                //ios端的显示
+                if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
+                    androidImg = "img/weixin_android.png";
+                }
+                //android和其他端的显示
+                else {
+                    androidImg = "img/weixin_android.png";
+                }
+            }
+        }
+
+        /**
+         * 微信扫二维码打开
+         * */
+        if(isWeiXin()){
+            if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
+                $("#ios_tips").show().attr("src",iosImg);
+            } else {
+                $("#android_tips").show().attr("src",androidImg);
+            }
+        }
+        /**
+         * 非微信打开
+         * */
+
+        //ios端
+        else if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
+            //含ios下载地址
+            if(urlPara.para.iurl){
+                window.location.href= iosUrl;
+            }
+            //通用地址
+            else if(urlPara.para.url){
+                window.location.href= allUrl;
+            }
+            //不含ios下载地址，显示ios敬请期待图片
+            else{
+                $("#ios_tips").show().attr("src",iosImg);
+            }
+        }
+        //android 端
+        else if (browser.versions.android) {
+            //含android下载地址
+            if(urlPara.para.aurl){
+                window.location.href= androidUrl;
+            }
+            //通用地址
+            else if(urlPara.para.url){
+                window.location.href= allUrl;
+            }
+            //不含android下载地址，显示android敬请期待图片
+            else{
+                $("#android_tips").show().attr("src",androidImg);
+            }
+        }
+        //其他端打开链接
+        else {
+            //既有ios又有android下载地址
+            if(urlPara.para.aurl && urlPara.para.aurl){
+                window.location.href= androidUrl;
+            }else{
+                //只有android下载地址
+                if(urlPara.para.aurl){
+                    window.location.href= androidUrl;
+                }
+                //只有ios下载地址
+                else if(urlPara.para.iurl){
+                    window.location.href= iosUrl;
+                }
+                //通用地址
+                else if(urlPara.para.url){
+                    window.location.href= allUrl;
+                }
+                //都没有的时候显示wait_android的图片
+                else{
+                    $("#android_tips").show().attr("src",androidImg);
+                }
+            }
+        }
+
+
+    });
+
+
+    function isWeiXin(){
+        var ua = window.navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+</script>
+</body>
+</html>

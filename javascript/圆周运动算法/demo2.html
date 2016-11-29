@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../jquery-1.7.2.min.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+    $(function(){
+        //中心点横坐标
+        var dotLeft = ($(".container").width()-$(".dot").width())/2;
+        //中心点纵坐标
+        var dotTop = ($(".container").height()-$(".dot").height())/2;
+        //起始角度
+        var stard = 0;
+        //半径
+        var radius = 200;
+        //每一个BOX对应的角度;
+        var avd = 360/$(".box").length;
+        //每一个BOX对应的弧度;
+        var ahd = avd*Math.PI/180;
+        //运动的速度
+        var speed = 2;
+
+
+        //设置圆的中心点的位置
+        $(".dot").css({"left":dotLeft,"top":dotTop});
+        //设置DIV圆形排列
+        $(".box").each(function(index, element){
+            $(this).css({"left":Math.sin((ahd*index))*radius+dotLeft,"top":Math.cos((ahd*index))*radius+dotTop});
+        });
+
+        //运动函数
+        var fun_animat = function(){
+
+            speed = speed<360?speed:2;
+
+            //运运的速度
+            speed+=2;
+            //运动距离，即运动的弧度数;
+            var ainhd = speed*Math.PI/180;
+
+            //按速度来定位DIV元素
+            $(".box").each(function(index, element){
+                $(this).css({"left":Math.sin((ahd*index+ainhd))*radius+dotLeft,"top":Math.cos((ahd*index+ainhd))*radius+dotTop});
+            });
+        }
+
+        //定时调用运动函数
+        var setAnimate = setInterval(fun_animat,100);
+    })
+</script>
+</body>
+</html>

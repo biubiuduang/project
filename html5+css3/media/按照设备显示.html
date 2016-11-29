@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>按照设备显示</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <!--<link rel="stylesheet" href="style.css">-->
+    <style type="text/css">
+        body,html{
+            margin:0;
+            padding: 0;
+            overflow: hidden;
+            width: 100%;
+        }
+        .media{
+            background-color: yellow;
+            font-size: 24px;
+        }
+        @media all and (max-device-width: 480px){
+            .media{
+                background-color: #9A4690;
+            }
+        }
+    </style>
+</head>
+<body>
+<p class="media">这里是媒介, PC背景为红色, 手持设备背景为黄色</p>
+
+</body>
+</html>

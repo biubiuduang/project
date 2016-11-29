@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="a1"></div>
+<script type="text/javascript" src="ckplayer.js" charset="utf-8"></script>
+<script type="text/javascript">
+    var flashvars={
+        f:'http://www.superd.cn/themes/superd/img/phone/d1_en_720p.mp4',
+        a:88,
+        s:1,
+        c:0,
+        p:1,
+        v:40,
+        wh:'16:9'
+    };
+    var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
+    var video=['http://www.superd.cn/themes/superd/img/phone/d1_en_720p.mp4->video/mp4'];
+    CKobject.embed('ckplayer.swf','a1','ckplayer_a1','100%','100%',true,flashvars,video,params);
+</script>
+</body>
+</html>
