@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多物体 圆周运动(带载体)</title>
+    <style type="text/css">
+        .box{
+            width: 1000px;
+            height: 500px;
+            border:1px solid #333333;
+            position: relative;
+            perspective: 1000px;
+        }
+        .circle{
+            width: 6px;
+            height: 6px;
+            background-color: #1f1f1f;
+            border-radius: 50%;
+            position: absolute;
+            right:-10px;
+            top:50%;
+            margin-top:-3px;
+        }
+        .circle div{
+            position: absolute;
+        }
+        .circle div img{
+            width: 100%;
+        }
+        #click{
+            position: relative;
+            z-index: 99;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <div class="circle">
+        <div><img src="img/d1-1.png" alt="0"></div>
+        <div><img src="img/p4.png" alt="1"></div>
+        <div><img src="img/p4-2.png" alt="2"></div>
+        <div><img src="img/p6.png" alt="3"></div>
+    </div>
+</div>
+<div id="click">
+    <div class="click">0</div>
+    <div class="click">1</div>
+    <div class="click">2</div>
+    <div class="click">3</div>
+</div>
+
+<script type="text/javascript" src="../../jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+
+
+
+    $(function(){
+        function round(){
+            //每个旋转的物体
+            var boxObj = document.getElementsByClassName("circle")[0];
+            var listObj = boxObj.getElementsByTagName("div");
+            //旋转的个数
+            var len = listObj.length;
+            //设置半径为200;
+            var r = parseInt($(window).width()/3);
+            var angle=Math.PI/180*360/len;
+            var timer = 0;
+            //旋转速度
+            var speed = 19;
+
+            var cR=0;
+            var ccR=0;
+
+            //初始化
+
+            for(var i=0;i<len;i++) {
+                var item = listObj[i];
+
+                var sinR=Math.sin(angle*i+ccR);
+                var cosR=-Math.cos(angle*i+ccR);
+                var w = Math.abs(cosR)*r;
+
+                item.style.width = w + "px";
+                item.style.top = (sinR*(r/2)) + "px";
+                item.style.left = (cosR*(r*0.7)) + "px";
+
+                //**注意  后续图片做 100:93 像素大小的
+                item.style.marginTop = (-w*0.93/2)+"px";
+                item.style.marginLeft = (-w/2)+"px";
+
+                item.rotate=(angle*i+2*Math.PI)%(2*Math.PI);
+            }
+
+
+            //旋转函数
+
+            var rotate=function(){
+                ccR=(ccR+2*Math.PI)%(2*Math.PI);
+                if((cR-ccR) < 0) cR=cR+2*Math.PI;
+                if((cR-ccR) < (Math.PI)){
+                    ccR=ccR+(cR-ccR)/speed;
+                }else{
+                    ccR=ccR-(2*Math.PI+ccR-cR)/speed;
+                }
+
+                if(Math.abs((cR+2*Math.PI)%(2*Math.PI)-(ccR+2*Math.PI)%(2*Math.PI))<Math.PI/720){
+                    ccR=cR;
+                    clearInterval(timer);
+                    timer=0;
+                }
+
+                for(var i=0;i<len;i++){
+                    var item=listObj[i];
+                    var sinR=Math.sin(angle*i+ccR);
+                    var cosR=-Math.cos(angle*i+ccR);
+                    var w = Math.abs(cosR)*r;
+
+
+                    item.style.top = (sinR*(r/2)) + "px";
+                    item.style.left = (cosR*(r*0.7)) + "px";
+                    item.style.marginLeft = (-w/2)+"px";
+
+                    //**注意  后续图片做 100:93 像素大小的
+                    item.style.marginTop = (-w*0.93/2)+"px";
+                    item.style.width = w + "px";
+
+                }
+            };
+
+            $(".click").click(function(){
+                lindex = $(this).index();
+                cR=Math.PI/2+listObj[lindex].rotate;
+                timer || (timer=setInterval(rotate,10));
+            });
+        }
+
+        round();
+
+
+        $(window).resize(function(){
+            round();
+        })
+
+    })
+</script>
+</body>
+</html>

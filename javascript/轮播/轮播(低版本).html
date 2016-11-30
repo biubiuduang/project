@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>改版透明度的轮播</title>
+    <!--加入低版本IE浏览器判断-->
+    <style type="text/css">
+        body,html{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        .box,.banner{
+            width: 100%;
+            height: 700px;
+            position: relative;
+            overflow: hidden;
+        }
+        .banner div{
+            width: 100%;
+            height: 700px;
+            position: absolute;
+            top:0;
+            left:0;
+            z-index: 1;
+            opacity: 0;
+            filter:alpha(opacity = 0);
+            -webkit-transition: opacity 2s;
+            -moz-transition: opacity 2s;
+            -ms-transition: opacity 2s;
+            -o-transition: opacity 2s;
+            transition: opacity 2s;
+        }
+        .banner div.action{
+            opacity: 1;
+            filter:alpha(opacity = 100);
+        }
+
+        /*圆周运动*/
+        .circle{
+            width: 6px;
+            height: 6px;
+            background-color: #1f1f1f;
+            border-radius: 50%;
+            position: absolute;
+            right:-10px;
+            top:50%;
+            margin-top:-3px;
+            z-index: 2;
+        }
+        .circle div{
+            position: absolute;
+        }
+        .circle div img{
+            width: 100%;
+        }
+
+        /*左右箭头*/
+        .banner-button-prev,.banner-button-next{
+            width: 50px;
+            height: 100px;
+            position: absolute;
+            top:50%;
+            margin-top:-50px;
+            z-index: 3;
+            text-align: center;
+            font-size: 60px;
+            cursor: pointer;
+        }
+        .banner-button-prev{
+            left:20px;
+        }
+        .banner-button-next{
+            right:20px;
+        }
+        /*导航点*/
+        .pagination-bullets{
+            position: absolute;
+            bottom: 10px;
+            left:50%;
+            z-index: 3;
+            margin-left:-52px;
+        }
+        .pagination-bullets .pagination-bullet{
+            width: 8px;
+            height: 8px;
+            display: block;
+            float: left;
+            background-color: #ff9c28;
+            border-radius: 8px;
+            margin:0 5px;
+            -webkit-transition: width 2s;
+            -moz-transition: width 2s;
+            -ms-transition: width 2s;
+            -o-transition: width 2s;
+            transition: width 2s;
+        }
+        .pagination-bullets .pagination-bullet.pagination-bullet-action{
+            width: 40px;
+        }
+
+
+
+    </style>
+    <!--[if lte IE 8]>
+    <style>
+        .circle{
+            width: 40%;
+            position: absolute;
+            top:50%;
+            right: 10%;
+            z-index: 2;
+            background: none;
+        }
+        .circle div{
+            top:0;
+            left:0;
+            display: none;
+        }
+        .circle div.circle-action{
+            top:0;
+            left:0;
+            display: block;
+        }
+    </style>
+    <![endif]-->
+
+</head>
+<body>
+<div class="box">
+    <div class="banner">
+        <div class="action" style="background-color: red;">banner1</div>
+        <div style="background-color: yellow;">banner2</div>
+        <div style="background-color: blue;">banner3</div>
+        <div style="background-color:#9A4690 ;">banner4</div>
+    </div>
+    <div class="banner-button-prev"> < </div>
+    <div class="banner-button-next"> > </div>
+    <div class="pagination-bullets">
+        <span class="pagination-bullet pagination-bullet-action"></span>
+        <span class="pagination-bullet"></span>
+        <span class="pagination-bullet"></span>
+        <span class="pagination-bullet"></span>
+    </div>
+    <div class="circle">
+        <div><img src="img/d1-1.png" data-index="3"></div>
+        <div><img src="img/p4.png" data-index="2"></div>
+        <div><img src="img/p4-2.png" data-index="1"></div>
+        <div class="circle-action"><img src="img/p6.png" data-index="0"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var u = navigator.userAgent;
+
+        var bannerSpeed = 0;
+
+        var bannerTimer = null;
+        //元素的个数
+        var len = $(".banner div").length;
+        //设置半径为屏幕宽度的 1/3;
+        var r = $(window).width()*0.4;
+        $(window).resize(function(){
+            r = $(window).width()/3;
+            init();
+        });
+
+        //圆周运动
+        //每个旋转的物体
+
+        //高版本浏览器的展示形式
+        if(u.indexOf("MSIE 6.0") == -1 && u.indexOf("MSIE 7.0") == -1 && u.indexOf("MSIE 8.0") == -1){
+            var boxObj = document.getElementsByClassName("circle")[0];
+            var listObj = boxObj.getElementsByTagName("div");
+
+
+            var angle=Math.PI/180*360/len;
+            var timer = 0;
+            //旋转速度
+            var speed = 19;
+
+            var cR=0;
+            var ccR=0;
+
+            //初始化
+            for(var i=0;i<len;i++) {
+                var item = listObj[i];
+
+                var sinR=Math.sin(angle*i+ccR);
+                var cosR=-Math.cos(angle*i+ccR);
+                var w = Math.abs(cosR)*r;
+
+                item.style.width = w + "px";
+                item.style.top = (sinR*(r/2)) + "px";
+                item.style.left = (cosR*(r*0.7)) + "px";
+
+                //**注意  后续图片做 100:93 像素大小的
+                item.style.marginTop = (-w*0.93/2)+"px";
+                item.style.marginLeft = (-w/2)+"px";
+
+                item.rotate=(angle*i+2*Math.PI)%(2*Math.PI);
+            }
+
+            //旋转函数
+
+            var rotate=function(){
+                ccR=(ccR+2*Math.PI)%(2*Math.PI);
+                if((cR-ccR) < 0) cR=cR+2*Math.PI;
+                if((cR-ccR) < (Math.PI)){
+                    ccR=ccR+(cR-ccR)/speed;
+                }else{
+                    ccR=ccR-(2*Math.PI+ccR-cR)/speed;
+                }
+                if(Math.abs((cR+2*Math.PI)%(2*Math.PI)-(ccR+2*Math.PI)%(2*Math.PI))<Math.PI/720){
+                    ccR=cR;
+                    clearInterval(timer);
+                    timer=0;
+                }
+
+                for(var i=0;i<len;i++){
+                    var item=listObj[i];
+                    var sinR=Math.sin(angle*i+ccR);
+                    var cosR=-Math.cos(angle*i+ccR);
+                    var w = Math.abs(cosR)*r;
+
+
+                    item.style.top = (sinR*(r/2)) + "px";
+                    item.style.left = (cosR*(r*0.7)) + "px";
+                    item.style.marginLeft = (-w/2)+"px";
+
+                    //**注意  后续图片做 100:93 像素大小的
+                    item.style.marginTop = (-w*0.93/2)+"px";
+                    item.style.width = w + "px";
+
+                }
+            };
+        }
+
+        //高版本浏览器的展示形式
+        function rount(){
+            cR=Math.PI/2+listObj[bannerSpeed].rotate;
+            timer || (timer=setInterval(rotate,10));
+        }
+
+        //低版本IE 展示形式
+        function bannerIE(){
+
+            //图片的比例是 100 : 93
+            var w = $(".circle").width();
+            var h = w*0.93;
+
+            $(".circle").css({"height": h +"px","margin-top": -h/2 +"px"});
+
+            var cIndex = (len - 1 - bannerSpeed);
+            $(".circle div:eq("+ cIndex +")").addClass("circle-action").siblings().removeClass("circle-action");
+        }
+
+        function init(){
+            if(u.indexOf("MSIE 6.0") == -1 && u.indexOf("MSIE 7.0") == -1 && u.indexOf("MSIE 8.0") == -1){
+                rount();
+            }else{
+                bannerIE();
+            }
+            $(".banner div:eq("+ bannerSpeed +")").addClass("action").siblings().removeClass("action");
+            $(".pagination-bullets .pagination-bullet:eq("+ bannerSpeed +")").addClass("pagination-bullet-action").siblings().removeClass("pagination-bullet-action");
+        }
+
+        init();
+
+        //左右切换
+        $(".banner-button-prev").click(function(){
+            bannerSpeed --;
+            if (bannerSpeed < 0){
+                bannerSpeed = len - 1;
+            }
+
+            init();
+        });
+
+        $(".banner-button-next").click(function(){
+            bannerSpeed ++;
+            if (bannerSpeed >= len){
+                bannerSpeed = 0;
+            }
+
+            init();
+        });
+
+        //点切换
+        $(".pagination-bullet").click(function(){
+            var index = $(this).index();
+            bannerSpeed = index;
+
+            init();
+        });
+
+        //自动切换部分
+        var bannerShow = function(){
+            bannerSpeed ++;
+            if (bannerSpeed >= len){
+                bannerSpeed = 0;
+            }
+            init();
+
+        };
+
+        bannerTimer = setInterval(bannerShow,3500);
+
+        $(".box").bind({
+            mouseenter : function (){clearInterval(bannerTimer)},
+            mouseleave : function(){bannerTimer = setInterval(bannerShow,3500);}
+        })
+
+    });
+
+
+</script>
+</body>
+</html>

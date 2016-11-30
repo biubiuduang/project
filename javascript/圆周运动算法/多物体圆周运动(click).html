@@ -39,79 +39,82 @@
         <div style="background-color: blue;">3</div>
     </div>
 </div>
-<div>
-    <input class="left" type="button" value="left" />
-    <input class="right" type="button" value="right" />
+<div id="click">
+    <div class="click">0</div>
+    <div class="click">1</div>
+    <div class="click">2</div>
+    <div class="click">3</div>
 </div>
 
 <script type="text/javascript" src="../../jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
+
+    var cR=0;
+    var ccR=0;
+
     $(function(){
+
         //每个旋转的物体
-        var listObj = $(".circle div");
+        var boxObj = document.getElementsByClassName("circle")[0];
+        var listObj = boxObj.getElementsByTagName("div");
         //旋转的个数
         var len = listObj.length;
         //设置半径为200;
         var r = 200;
-
-        var timer=0;
-        var speed = 0;
-
-        var cR = 0;
-        var ccR = 0;
+        var angle=Math.PI/180*360/len;
+        var timer = 0;
 
         //初始化
-        listObj.each(function(){
-            var item = $(this);
-            item.css({
-                "top": Math.sin(360/len * item.index() * Math.PI / 180)*r,
-                "left": Math.cos(360/len * item.index() * Math.PI / 180)*r
-            });
 
-        });
+        for(var i=0;i<len;i++) {
+            var item = listObj[i];
+
+            var sinR=Math.sin(angle*i+ccR);
+            var cosR=-Math.cos(angle*i+ccR);
+            item.style.top = sinR*r + "px";
+            item.style.left = cosR*r + "px";
+
+            item.rotate=(angle*i+2*Math.PI)%(2*Math.PI);
+
+            item.style.width = Math.abs(cosR)*r + "px";
+        }
 
 
         //旋转函数
-        var rotate = function(){
-            listObj.each(function(){
-                var item = $(this);
-                ccR = 360/len * item.index() + speed;
-                console.log(speed);
-                item.css({
-                    "top": Math.sin(ccR* Math.PI / 180)*r,
-                    "left": Math.cos(ccR* Math.PI / 180)*r
-                });
-            });
+
+        var rotate=function(){
+            ccR=(ccR+2*Math.PI)%(2*Math.PI);
+            if((cR-ccR) < 0) cR=cR+2*Math.PI;
+            if((cR-ccR) < (Math.PI)){
+                ccR=ccR+(cR-ccR)/19;
+            }else{
+                ccR=ccR-(2*Math.PI+ccR-cR)/19;
+            }
+
+            if(Math.abs((cR+2*Math.PI)%(2*Math.PI)-(ccR+2*Math.PI)%(2*Math.PI))<Math.PI/720){
+                ccR=cR;
+                clearInterval(timer);
+                timer=0;
+            }
+
+            for(var i=0;i<len;i++){
+                var item=listObj[i];
+                var sinR=Math.sin(angle*i+ccR);
+                var cosR=-Math.cos(angle*i+ccR);
+
+                console.log(i + " : " + sinR);
+
+                item.style.top = sinR*r + "px";
+                item.style.left = cosR*r + "px";
+
+                item.style.width = Math.abs(cosR)*r + "px";
+            }
         };
-        $(".left").click(function(){
-            clearInterval(timer);
-            timer = setInterval(function(){
-                speed ++;
-                if(speed % 360 == 0){
-                    speed = 0;
-                }
 
-                rotate();
-
-                if(ccR%90 === 0){
-                    clearInterval(timer);
-                }
-            },10);
-        });
-        $(".right").click(function(){
-            clearInterval(timer);
-            timer = setInterval(function(){
-                speed --;
-
-                if(speed % 360 == 0){
-                    speed = 0;
-                }
-
-                rotate();
-                if(ccR%90 === 0){
-                    clearInterval(timer);
-                }
-            },10);
+        $(".click").click(function(){
+            lindex = $(this).index();
+            cR=Math.PI/2-listObj[lindex].rotate;
+            timer || (timer=setInterval(rotate,10));
         });
 
 
