@@ -27,6 +27,12 @@ module.exports = function(grunt){
                 files:[
                     {
                         expand : true,
+                        cwd : "themes/css/",
+                        src : "lteie8.css",
+                        dest: "dest/themes/css/"
+                    },
+                    {
+                        expand : true,
                         src : "*.html",
                         dest: "dest"
                     },
@@ -66,7 +72,7 @@ module.exports = function(grunt){
             },
             task1 : {
                 files : {
-                    "dest/themes/js/common/base.js":["themes/js/common/base.js"]
+                    "dest/themes/js/base.js":["themes/js/base.js"]
                 }
             }
         },
@@ -75,7 +81,7 @@ module.exports = function(grunt){
         cssmin : {
             target : {
                 files : {
-                    "dest/themes/css/main.css":["themes/css/base.css","themes/css/doc.css"]
+                    "dest/themes/css/main.css":["themes/css/base.css"]
                 }
             }
         },
