@@ -11,13 +11,6 @@
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <meta content="black" name="apple-mobile-web-app-status-bar-style" />
     <meta content="telephone=no" name="format-detection" />
-    <!--[if lte IE 8]>
-        <script type="text/javascript">
-            window.onload = function(){
-                alert("您的IE版本太低,影响您的浏览,请升级IE到9以上,或者用其他浏览器.谢谢");
-            }
-        </script>
-    <![endif]-->
     <!--ie 9 以下对html5标签 和 css3属性的 降级处理-->
     <!--[if lt IE 9]>
     <script src="themes/js/libs/css3-mediaqueries.js" type="text/javascript"></script>
@@ -356,7 +349,7 @@
         <div class="container">
             <div class="img" style="width: 100px;height: 100px; border: 1px solid red;background: url('themes/img/c4.png') center no-repeat;"></div>
             <img src="themes/img/c4.png" alt="">
-            <img src="themes/img/img.png" alt="" width="1000" height="600" >
+            <img src="themes/img/img.png" alt="" style="width: 100px;height: 100px;background-color: rgba(0,0,0,0.5)">
         </div>
     </section>
 
@@ -414,7 +407,7 @@
     <section id="imgLoad">
         <h1>图片的懒加载</h1>
         <div class="container">
-            <p>base.js <code class="html">base.imgLoad()</code>方法实现 用法
+            <p>base.js <code>base.imgLoad()</code>方法实现 用法
                 <code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> src=<span class="hljs-string">""</span> data-src=<span class="hljs-string">"当前img的路径"</span> /&gt;</span></code> </p>
             <p>图片的懒加载(页面优化 减少页面加载的线程 加快页面加载速度)</p>
             <img src="" data-src="themes/img/c4.png" alt="">

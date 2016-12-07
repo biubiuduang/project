@@ -226,7 +226,7 @@ input[type="button"].btn {
   font-size: 16px;
   font-weight: 700;
   line-height: 1.42857;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   outline: 0 none;
   padding: 6px 32px;
   text-align: center;
@@ -367,7 +367,6 @@ select + .iconfont-bottom {
 .container {
   padding: 0 15px;
   margin: 0 auto;
-  width: 1170px;
 }
 /* 容器响应式设置(不随浏览器拖拉而改变 只根据屏幕尺寸显示不同的布局) */
 @media (min-width: 768px) {
