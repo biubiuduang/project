@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模块拖拽移动功能</title>
+    <link rel="stylesheet" href="../../../前端文档/themes/css/base.css" />
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="../../../前端文档/themes/css/lteie8.css" />
+    <![endif]-->
+    <style type="text/css">
+        .target{
+            height: 800px;
+            border:1px solid red;
+        }
+        .box{
+            height: 800px;
+            border:1px solid green;
+        }
+        .box .col-md-3{
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box col-xs-12 col-md-8">
+        <div class="col-md-3" style="background-color: #00A1CB;">1</div>
+    </div>
+    <div class="target col-xs-12 col-md-4"></div>
+</div>
+<script type="text/javascript" src="../../../jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var para = {
+            //鼠标位移坐标
+            ex : 0,
+            ey : 0,
+            //盒子位置
+            bx : $(".box").offset().left,
+            by : $(".box").offset().top,
+            //目标盒子的位置
+            tx : $(".target").offset().left,
+            ty : $(".target").offset().top
+        };
+
+
+
+    })
+</script>
+</body>
+</html>

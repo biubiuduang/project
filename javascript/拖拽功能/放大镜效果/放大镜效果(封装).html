@@ -3,8 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <title>放大镜效果(封装)</title>
+    <link rel="stylesheet" href="../../../前端文档/themes/css/base.css" />
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="../../../前端文档/themes/css/lteie8.css" />
+    <![endif]-->
+    <style type="text/css">
+        .pic-box{
+            width: 500px;
+            height: 500px;
+            border:1px solid #333333;
+            position: relative;
+            z-index: 2;
+            margin-top:200px;
+        }
+        .pic-box img{
+            width: 100%;
+            height: auto;
+        }
+        .pic-box .shade{
+            display: none;
+            width: 200px;
+            height: 200px;
+            background-color:#000000;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            cursor: move;
+            z-index: 1;
+            opacity: 0.2;
+            -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
+            filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
+        }
+        .pic-box .mirror-box{
+            display: none;
+            width: 400px;
+            height: 400px;
+            border:1px solid #333333;
+            position: absolute;
+            right: -450px;
+            top:0;
+            overflow: hidden;
+        }
+        .pic-box .mirror-box img{
+            position: absolute;
+            /*border:1px solid red;*/
+        }
+    </style>
 </head>
 <body>
+<div class="container">
+    <div class="pic-box">
+        <img src="01.jpg" alt="">
+        <div class="shade"></div>
+        <div class="mirror-box"></div>
+    </div>
+</div>
 
+<script type="text/javascript" src="../../../jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        magnify(".pic-box",".shade",".mirror-box");
+    });
+    //放大镜效果封装
+    /**
+     * magnify() 放大镜效果方法 参数:
+     * container 放大镜的集装箱
+     * shade     放大镜阴影
+     * mirror    镜像
+     * */
+    function magnify(container,shade,mirror){
+        var para = {
+            //鼠标距离页面上下的距离
+            ex : 0,
+            ey : 0,
+            //box元素距离页面上下的距离
+            ox : $(container).offset().left,
+            oy : $(container).offset().top,
+            //box元素的宽高
+            bw : $(container).width(),
+            bh : $(container).height(),
+            //阴影区域的宽高
+            sw : $(shade).width(),
+            sh : $(shade).height(),
+            //阴影区域的位移
+            x : 0,
+            y : 0,
+            //图片
+            pic : $(container).find("img").attr("src"),
+            //图片html
+            ht : null,
+
+            //阴影区域的宽高
+            mw : $(mirror).width(),
+            mh : $(mirror).height(),
+            //放大倍数
+            mul : 0,
+
+            //放大镜区域的位移
+            ml : 0,
+            mt : 0
+        };
+        $(container).mousemove(function(e){
+            para.ex = e.pageX;
+            para.ey = e.pageY;
+
+            $(shade).show();
+            $(mirror).show();
+
+            //放大倍数 = 镜像框大小 / 阴影区域大小
+            para.mul = para.mw/para.sw;
+
+            //获取阴影区域的位移
+            para.x = para.ex - para.ox - para.sw/2;
+            para.y = para.ey - para.oy - para.sh/2;
+            if(para.x <= 0){
+                para.x = 0;
+            }
+            if(para.x >= (para.bw - para.sw)){
+                para.x = (para.bw - para.sw)
+            }
+            if(para.y <= 0){
+                para.y = 0;
+            }
+            if(para.y >= (para.bh - para.sh)){
+                para.y = (para.bh - para.sh)
+            }
+
+            $(shade).css({"left":para.x+"px","top":para.y +"px"});
+
+            para.ht = "<img src='"+ para.pic + "' />";
+
+            $(mirror).html(para.ht);
+
+            para.ml = -(para.x*para.mul);
+            para.mt = -(para.y*para.mul);
+
+            $(mirror+" img").css({"width": para.bw*para.mul+"px" ,"height" :para.bh*para.mul+"px","left" : para.ml +"px","top":para.mt +"px"})
+
+        }).mouseleave(function(){
+            $(shade).hide();
+            $(mirror).hide();
+        })
+    }
+</script>
 </body>
 </html>
