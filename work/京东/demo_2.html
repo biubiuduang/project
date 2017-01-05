@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../jquery-1.10.1.min.js"></script>
+</head>
+<body>
+<div onclick="reservation('3640170')">
+    <img src="http://img13.360buyimg.com/cms/jfs/t700/243/421153205/57109/cc0407d/54ad2521N97dae507.jpg" width="640" height="353" alt="" />
+</div>
+
+<!-- 以下是预约的核心代码，请不要修改，直接放置在任意自定义内容区即可 -->
+<script>window.presaleSending = false;
+/*预约商品*/
+function reservation(skuIds){
+    if(!presaleSending){
+        presaleSending = true;
+        $.ajax({
+            url: 'http://act.jshop.jd.com/m/presale.html',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                sid: Base.getSid(),
+                skuIds: skuIds
+            },
+            success: function(data){
+                if(data.isLogined === false){     /*如果没有登录，则跳转到登录页面*/
+                    msgAlert("预约需要先登录，火速带您前往登录页面", 3000);
+                    setTimeout(function(){
+                        window.location.href = "http://m.jd.com/user/login.action?v=t&returnurl=" + encodeURIComponent(location.href) + "&sid=" + Base.getSid();
+                    }, 2000);
+                }else if(data.success === true){  /*如果预约成功，则给予提示。msgAlert是系统提供的提示框插件。也可以自己写提示代码*/
+                    msgAlert("预约成功");
+                }else if(data.repeatCount > 0){
+                    msgAlert("您已经预约过了，不能重复预约哦");
+                }else{
+                    msgAlert("预约失败");
+                }
+            },
+            complete: function(){
+                presaleSending = false;
+            }
+        })
+    }
+}
+</script>
+</body>
+</html>

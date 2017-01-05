@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../jquery-1.10.1.min.js"></script>
+</head>
+<body>
+<div style="font: 22px/normal 'microsoft yahei'; width: 1920px; height: 143px; position: relative; font-size-adjust: none; font-stretch: normal;">
+    <img alt="" src="http://img10.360buyimg.com/cms/g15/M01/07/03/rBEhWFMHJmoIAAAAAACUHTMB2soAAI1_gEt72YAAJQ1986.jpg" />
+    <div id="yy-list">
+        <a style="background: url('http://misc.360buyimg.com/lib/img/e/blank.gif');
+         left: 67px; top: 21px; width: 178px; height: 46px; display: block; position: absolute; z-index: 2;" id="yy-btn-3640170" href="" target="_blank">
+        </a>
+        <span style="color:#ffffff;left: 94px; top: 78px; width: 129px; height: 28px; position: absolute;">
+            已有<span id="yy-count-3640170" style="color:#e4e40d;">0</span>人预约
+        </span>
+        <span style="color:#ffffff;left: 778px; top: 79px; width: 129px; height: 28px; position: absolute;">
+            已有<span id="yy-count-1066726" style="color:#e4e40d;">0</span>人预约
+        </span>
+    </div>
+</div>
+<script>
+    $(function() {
+        var el = $('#yy-list');
+        skus = [3640170],
+                i = 0,
+                len = skus.length;
+
+        function getCount(sku) {
+            $.ajax({
+                url: '//soa.yushou.jd.com/youshouinfo.action',
+                data: {
+                    sku: sku
+                },
+                dataType: 'jsonp',
+                success: function(r) {
+                    $('#yy-count-'+sku).html(r.num+'');
+                    $('#yy-btn-'+sku).attr('href', r.url);
+                }
+            });
+        }
+
+        for ( i = 0; i < len; i++ ) {
+            getCount(skus[i]);
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../jquery-1.10.1.min.js"></script>
+</head>
+<body>
+<div id="yy-list" style="position:relative; width: 990px;height: 860px;background: url('http://img10.360buyimg.com/cms/jfs/t3265/201/1707245836/58802/f348dc34/57d26dc7N124c7f0d.jpg') center no-repeat;">
+    <a style="left: 42px; bottom: 125px; width: 160px; height: 42px; display: block; position: absolute; z-index: 2;" id="yy-btn-3640170" href="" target="_blank">
+    </a>
+    <a style="left: 276px; bottom: 125px; width: 160px; height: 42px; display: block; position: absolute; z-index: 2;" href="javascript:void(0);" target="_blank">
+    </a>
+    <span style="color:#ffffff;left: 42px; bottom: 90px; height: 28px; font-size:24px; position: absolute;">
+        已有<span id="yy-count-3640170" style="color:#614a2b;">0</span>人预约
+    </span>
+</div>
+<script>
+    $(function() {
+        var el = $('#yy-list');
+        skus = [3640170],
+                i = 0,
+                len = skus.length;
+
+        function getCount(sku) {
+            $.ajax({
+                url: '//soa.yushou.jd.com/youshouinfo.action',
+                data: {
+                    sku: sku
+                },
+                dataType: 'jsonp',
+                success: function(r) {
+                    $('#yy-count-'+sku).html(r.num+'');
+                    $('#yy-btn-'+sku).attr('href', r.url);
+                }
+            });
+        }
+
+        for ( i = 0; i < len; i++ ) {
+            getCount(skus[i]);
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=0, user-scalable=1.0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <title>直播间分享页</title>
+
+    <!--<link href="http://vjs.zencdn.net/5.5.3/video-js.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="themes/css/base.css" />
+</head>
+<body>
+<div class="container">
+    <!-- 直播视频 -->
+    <div id="video">
+        <video id="md-video" class="video-js" autoplay="autoplay" controls preload="auto"
+               poster="themes/img/bg.jpg" data-setup="{}">
+            <!--<source src="rtmp://4342.liveplay.myqcloud.com/live/4342_production_339520?bizid=4342&txSecret=3133f5e3fc5a67bd0500618a10f0961b&txTime=584BA8EC&ts=1481353452" type="rtmp/flv">-->
+            <!--&lt;!&ndash; 如果上面的rtmp流无法播放，就播放hls流 &ndash;&gt;-->
+            <!--<source src="http://4342.liveplay.myqcloud.com/live/4342_production_339520.m3u8?bizid=4342&txSecret=3133f5e3fc5a67bd0500618a10f0961b&txTime=584BA8EC&ts=1481353452" type='application/x-mpegURL'>-->
+        </video>
+    </div>
+    <!-- 房间信息层 -->
+    <div class="shade">
+        <!-- 主播 与 魅力值 -->
+        <section class="section-1">
+            <div class="anchor col-xs-12">
+                <div class="anchor-info col-xs-4">
+                    <div class="anchor-head-portrait col-xs-4">
+                        <img src="themes/img/p-1.png" alt=""/>
+                        <svg class="iconfont" aria-hidden="true" data-vip="true">
+                            <use xlink:href="#icon-vip"></use>
+                        </svg>
+                    </div>
+                    <h2 class="anchor-name col-xs-8" title="M主播用户名用户名用户名">M主播用户名用户名用户名</h2>
+                    <h2 class="anchor-id col-xs-4" title="13277">13277</h2>
+                </div>
+                <ul class="anchor-recommend col-xs-7">
+                   <li class="col-xs-2"><img src="themes/img/p-2.png" alt=""></li>
+                   <li class="col-xs-2"><img src="themes/img/p-3.png" alt=""></li>
+                   <li class="col-xs-2"><img src="themes/img/p-4.png" alt=""></li>
+                   <li class="col-xs-2"><img src="themes/img/p-5.png" alt=""></li>
+                   <li class="col-xs-2"><img src="themes/img/p-6.png" alt=""></li>
+                   <li class="col-xs-2"><img src="themes/img/p-7.png" alt=""></li>
+                </ul>
+
+                <span class="iconfont col-xs-1">&#xe605;</span>
+            </div>
+            <div class="exp">
+                <p>魅力 <span>888888888</span></p>
+                    <svg class="iconfont" aria-hidden="true">
+                        <use xlink:href="#icon-next"></use>
+                    </svg>
+            </div>
+        </section>
+        <!-- 红包 -->
+        <section class="section-2">
+            <div class="red-packet-container">
+                <img class="red-packet" src="themes/img/red-packet.png" alt="红包">
+            </div>
+        </section>
+        <!-- 礼物 -->
+        <section class="section-3">
+            <div class="gift">
+                <div class="gift-list" data-num="99">
+                    <div class="gift-host-head">
+                        <img src="themes/img/p-8.png" alt="" />
+                    </div>
+                    <h2 class="gift-username">送礼物人用户名用户名</h2>
+                    <h2 class="gift-type">送出<span>玫瑰</span></h2>
+                    <div class="gift-info">
+                        <img class="gift-pic" src="themes/img/rose.png" alt="">
+                        <span class="iconfont">&#xe605;</span>
+                        <img class="gift-sum" src="themes/img/99.png" alt="">
+                    </div>
+                </div>
+                <div class="gift-list" data-num="23">
+                    <div class="gift-host-head">
+                        <img src="themes/img/p-9.png" alt="" />
+                    </div>
+                    <h2 class="gift-username">送礼物人用户名用户名</h2>
+                    <h2 class="gift-type">送出<span>玫瑰</span></h2>
+                    <div class="gift-info">
+                        <img class="gift-pic" src="themes/img/lolly.png" alt="">
+                        <span class="iconfont">&#xe605;</span>
+                        <img class="gift-sum" src="themes/img/23.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 弹幕 -->
+        <section class="section-4">
+            <!--<div class="bullet-screen">-->
+            <!--<div class="bullet-head">-->
+            <!--<img src="themes/img/p-10.png" alt="">-->
+            <!--</div>-->
+            <!--</div>-->
+        </section>
+        <!-- 聊天框 -->
+        <section class="section-5">
+            <div class="chatting">
+                <div class="send">
+                    <!-- 聊天框内容分类 1:欢迎进入 2:送礼物 3:聊天 4:系统消息 -->
+                    <div class="send-list" data-type="1">
+                        <p>
+                            <img src="themes/img/level-9.png" alt="">
+                            欢迎:
+                            <span class="user-name">林大双</span>
+                            进入房间~
+                        </p>
+                    </div>
+                    <div class="send-list" data-type="2">
+                        <p>
+                            <img src="themes/img/level-9.png" alt="">
+                            <span class="user-name">金啊毛</span>:
+                            <span class="send-content">我送了 <span class="gift-sum">一</span>个</span>
+                            <img class="gift-type" src="themes/img/lolly.png" alt="礼物名称">
+                        </p>
+                    </div>
+                    <div class="send-list" data-type="3">
+                        <p>
+                            <img src="themes/img/level-9.png" alt="">
+                            <span class="user-name">徐小小小娘</span>:
+                            <span class="send-content">好漂亮好漂亮好漂亮</span>
+                        </p>
+                    </div>
+                    <div class="send-list" data-type="4">
+                        <p>
+                            <img src="themes/img/md.png" alt="">
+                            <span class="user-name">系统消息</span>:
+                            <span class="send-content">超多维D1手机发布一屏双芯三摄3D/VR手机点击查看详情> </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 组件 -->
+        <section class="section-6">
+            <div class="widget">
+                <div class="icon icon-share"></div>
+                <div class="icon icon-msg"></div>
+                <div class="icon icon-gift"></div>
+                <div class="icon icon-attention">
+                    <span class="iconfont heart-1">&#xe60d;</span>
+                    <span class="iconfont heart-2">&#xe60d;</span>
+                    <span class="iconfont heart-3">&#xe60d;</span>
+                    <span class="iconfont heart-4">&#xe60d;</span>
+                    <span class="iconfont heart-5">&#xe60d;</span>
+                    <span class="iconfont heart-6">&#xe60d;</span>
+                    <span class="iconfont heart-7">&#xe60d;</span>
+                    <span class="iconfont heart-8">&#xe60d;</span>
+                    <span class="iconfont heart-9">&#xe60d;</span>
+                    <span class="iconfont heart-10">&#xe60d;</span>
+                    <span class="iconfont heart-11">&#xe60d;</span>
+                    <span class="iconfont heart-12">&#xe60d;</span>
+                    <span class="iconfont heart-13">&#xe60d;</span>
+                    <span class="iconfont heart-14">&#xe60d;</span>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div id="J_shade">
+        <div></div>
+    </div>
+    <!-- 领红包弹窗 -->
+    <!-- 操作点击icon弹窗 -->
+    <!-- 主播未开播弹窗 -->
+</div>
+
+<script type="text/javascript" src="themes/js/libs/jquery-1.7.2.min.js"></script>
+<!--<script type="text/javascript" src="http://vjs.zencdn.net/5.5.3/video.js"></script>-->
+<script type="text/javascript" src="themes/js/libs/iconfont.js"></script>
+
+<script type="text/javascript" src="themes/js/base.js"></script>
+</body>
+</html>
