@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟手机短信发送</title>
+    <style type="text/css">
+        .oDiv1{
+            position: relative;
+            width: 500px;
+            height: 100px;
+            border:1px solid red;
+            overflow-y: scroll;
+            scroll-snap-type: none;
+        }
+        .oDiv2 p {
+            line-height:25px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<div class="oDiv1">
+    <div class="oDiv2"></div>
+</div>
+<input class="oTxt1" type="text" value="" />
+<input class="oBtn1" type="button" value="发送" />
+<script type="text/javascript" src="../../jquery-1.7.2.min.js" ></script>
+<script type="text/javascript">
+    window.onload = function(){
+        var oDiv1 = document.getElementsByClassName("oDiv1")[0];
+        var oDiv2 = document.getElementsByClassName("oDiv2")[0];
+        var oTxt1 = document.getElementsByClassName("oTxt1")[0];
+        var oBtn1 = document.getElementsByClassName("oBtn1")[0];
+
+        $(".oBtn1").click(function(){
+            if($(".oTxt1").val() == ''){
+                alert("请写点东西吧!");
+            }else{
+                oDiv2.innerHTML += '<p>'+ oTxt1.value +'</p>';
+                $(".oDiv1").scrollTop($(".oDiv2").height());
+                console.log($(".oDiv2").height());
+                $(".oTxt1").val('');
+            }
+        })
+    };
+</script>
+</body>
+</html>

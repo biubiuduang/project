@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>videoJS</title>
+    <link href="http://vjs.zencdn.net/5.5.3/video-js.css" rel="stylesheet">
+
+    <!-- If you'd like to support IE8 -->
+    <!--<script src="http://vjs.zencdn.net/ie8/1.1.1/videojs-ie8.min.js"></script>-->
+
+
+</head>
+
+
+<body>
+
+<h1>康康的直播间</h1>
+<video id="my-video" class="video-js" autoplay="autoplay" controls preload="auto" width="450" height="800"
+       poster="https://img.alicdn.com/imgextra/i2/754328530/TB2FpxhkXXXXXa5XXXXXXXXXXXX_!!754328530.jpg" data-setup="{}">
+    <source src="rtmp://4342.liveplay.myqcloud.com/live/4342_production_345993?bizid=4342&txSecret=c92b1cf9bd16d8c613ae0a530e26a5d0&txTime=585103E8&ts=1481704424" type="rtmp/flv">
+    <!-- 如果上面的rtmp流无法播放，就播放hls流 -->
+    <source src="http://4342.liveplay.myqcloud.com/live/4342_production_345993.m3u8?bizid=4342&txSecret=c92b1cf9bd16d8c613ae0a530e26a5d0&txTime=585103E8&ts=1481704424" type='application/x-mpegURL'>
+    <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to a web browser that
+        <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+    </p>
+</video>
+
+<script type="text/javascript" src="../../jquery-1.10.1.min.js"></script>
+<script src="http://vjs.zencdn.net/5.5.3/video.js"></script>
+<script type="text/javascript">
+        var video = document.getElementById("my-video");
+        video.play();
+</script>
+</body>
+</html>

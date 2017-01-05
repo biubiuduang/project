@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script>
+window.onload = function (){
+	var oImg = document.getElementById('img1');
+	
+	oImg.onclick = function (){
+		// alert( oImg.src );
+		// img/1.jpg
+		// file:///C:/Users/Administrator/Desktop/11-4-JS1/img/1.jpg
+		// if( oImg.src == 'img/1.jpg' ){
+		// 不能做为判断条件：
+		
+		// 1、所有的相对路径地址
+		/*
+					img src
+					href 
+					
+			 2、颜色值：color: red 	#f00 rgb() rgba()
+		*/
+			
+		if( oImg.src == 'http://localhost:63342/project/javascript/miaov/JavaScript%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/JS1-%E5%B1%9E%E6%80%A7%E6%93%8D%E4%BD%9C%E8%AF%BE%E4%BB%B6/img/1.jpg' ){
+			oImg.src = 'img/2.jpg';
+		}else{
+			oImg.src = 'img/3.jpg';
+		}
+	};
+};
+</script>
+</head>
+
+<body>
+
+<img id="img1" src="img/1.jpg" width="400" />
+
+</body>
+</html>

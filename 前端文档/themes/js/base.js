@@ -51,12 +51,12 @@ var base = {
     //图片的懒加载(页面优化 减少页面加载的线程 加快页面加载速度)
     //用法 <img src="" alt="" data-src="当前img的路径" />
     imgLoad : function(){
-        init();
+        imgOnload();
         $(window).scroll(function(){
             sd.st = $(window).scrollTop();
-            init();
+            imgOnload();
         });
-        function init(){
+        function imgOnload(){
             $("img").each(function(){
                 if($(this).attr("src") == ""){
                     var h = $(this).offset().top+$(this).height()/2;

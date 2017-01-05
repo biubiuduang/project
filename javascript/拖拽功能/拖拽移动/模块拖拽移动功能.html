@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="../../../前端文档/themes/css/lteie8.css" />
     <![endif]-->
     <style type="text/css">
+        .container{
+            position: relative;
+        }
         .target{
             height: 800px;
             border:1px solid red;
@@ -16,15 +19,31 @@
             height: 800px;
             border:1px solid green;
         }
-        .box .col-md-3{
+        .box .list{
             height: 300px;
+        }
+        .box .list.move{
+            position: absolute;
+            z-index: 9;
+        }
+        .box .list p {
+            height: 300px;
+            background-color: #00A1CB;
         }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="box col-xs-12 col-md-8">
-        <div class="col-md-3" style="background-color: #00A1CB;">1</div>
+        <div class="list col-md-4">
+            <p>1</p>
+        </div>
+        <div class="list col-md-4">
+            <p>1</p>
+        </div>
+        <div class="list col-md-4">
+            <p>1</p>
+        </div>
     </div>
     <div class="target col-xs-12 col-md-4"></div>
 </div>
@@ -35,6 +54,8 @@
             //鼠标位移坐标
             ex : 0,
             ey : 0,
+            cx : $(".container").offset().left,
+            cy : $(".container").offset().top,
             //盒子位置
             bx : $(".box").offset().left,
             by : $(".box").offset().top,
@@ -42,6 +63,26 @@
             tx : $(".target").offset().left,
             ty : $(".target").offset().top
         };
+
+        (function(){
+            $(".list").each(function(){
+                $(this).mousedown(function(){
+                    $(this).addClass("move");
+                    $(".container").mousemove(function(e){
+                        para.ex = e.pageX-para.cx-150;
+                        para.ey = e.pageY-para.cy-150;
+                        $(".move").css({
+                            "left" : para.ex,
+                            "top" : para.ey
+                        })
+                    })
+                });
+                $(this).mouseup(function(){
+                    $(this).removeClass("move");
+                })
+            });
+
+        })()
 
 
 

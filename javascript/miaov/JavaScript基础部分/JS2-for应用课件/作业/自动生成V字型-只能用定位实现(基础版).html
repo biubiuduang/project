@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自动生成V字型-基础版</title>
+    <style>
+        ul{
+            position: relative;
+        }
+        ul li{
+            list-style: none;
+            width: 50px;
+            height: 50px;
+            border:1px solid #000000;
+            font-size: 24px;
+            text-align: center;
+            line-height: 50px;
+            position: absolute;
+            background-color: red;
+            color:#ffffff;
+        }
+    </style>
+</head>
+<body>
+<input class="btn" type="button" value="自动生成10个LI" />
+<ul></ul>
+
+<script type="text/javascript" src="../../jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var list = "";
+        var onOff = true;
+        $(".btn").click(function(){
+            if(onOff) {               //此处为性能考虑.
+                onOff = false;
+                for (var i = 0; i < 9; i++) {
+                    if(i < 5){
+                        list += '<li style="left:' + (50 + 5) * i  + 'px;top:'+ (50 + 5) * ( i ) +'px;">' + i + '</li>'
+                    }else{
+                        list += '<li style="left:' + (50 + 5) * i  + 'px;top:'+ (50 + 5) * ( 9 - 1 - i ) +'px;">' + i + '</li>'
+                    }
+
+                }
+                $("ul").html(list);
+            }
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片切换</title>
+    <style type="text/css">
+        body{
+            text-align: center;
+        }
+        body,div,ul,li,p{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 500px;
+            height: 500px;
+            border:1px solid #333333;
+            position: relative;
+            margin:0 auto;
+            overflow: hidden;
+        }
+        .box .page,.box .text{
+            position: absolute;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            background-color: rgba(0,0,0,0.5);
+            left:0;
+        }
+        .box .page{
+            top:0;
+        }
+        .box .text{
+            bottom:0;
+         }
+        .box .left,.box .right{
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0,0,0,0.8);
+            color: #ffffff;
+            font-size: 40px;
+            text-align: center;
+            line-height: 50px;
+            position: absolute;
+            top:50%;
+            margin-top:-25px;
+            cursor:pointer;
+        }
+        .box .left{
+            left:0;
+        }
+        .box .right{
+            right:0;
+        }
+        ul.pic li{
+            float: left;
+            list-style: none;
+            width: 500px;
+            height: 500px;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+<input class="btn1" type="button" value="循环切换" />   <!-- 可循环切换 -->
+<input class="btn2" type="button" value="顺序切换" />   <!-- 不可循环切换 -->
+<p class="loop-state"></p>
+<div class="box">
+    <div class="page"></div>
+    <div class="left"> < </div>
+    <ul class="pic">
+        <li style="background: url('../img/1.jpg') center no-repeat; " title="文字一"></li>
+        <li style="background: url('../img/2.jpg') center no-repeat; " title="文字二"></li>
+        <li style="background: url('../img/3.jpg') center no-repeat; " title="文字三"></li>
+        <li style="background: url('../img/4.jpg') center no-repeat; " title="文字四"></li>
+    </ul>
+
+    <div class="right"> > </div>
+    <div class="text"></div>
+</div>
+<script type="text/javascript" src="../../jquery-1.7.2.min.js" ></script>
+<script src="//cdn.bootcss.com/jquery.touchswipe/1.6.18/jquery.touchSwipe.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var paras = {
+            len : $(".pic li").length,
+            boxWidth : $(".box").width(),
+            ulWidth : 0,
+            num : 0,
+            loop : true
+        };
+        var this_init = {
+            init : function(){
+                var that = this;
+                that.getLoad();
+                that.getEvent();
+                that.setLoop();
+            },
+            getLoad : function(){
+                var that = this;
+                $(".pic").css({"width":(paras.boxWidth * paras.len)}).animate({"margin-left":-(paras.num*paras.boxWidth)+"px"});
+                that.ani(paras.num);
+            },
+            ani : function(count){
+                $(".box .page").html((count+1)+"/"+paras.len);
+                $(".box .text").html($(".pic li:eq("+ count +")").attr("title"));
+            },
+            setLoop : function(){
+                paras.loop = true;
+                $(".loop-state").html("图片可从最后一张切换到第一张");
+            },
+            setUnLoop : function(){
+                paras.loop = false;
+                $(".loop-state").html("图片只能切换到最后一张或者第一张");
+            },
+            getEvent : function(){
+                var that = this;
+                $(".btn1").click(function(){
+                    that.setLoop();
+                });
+                $(".btn2").click(function(){
+                    that.setUnLoop();
+                });
+                $(".left").click(function(){
+                    that.getLeft();
+                });
+                $(".right").click(function(){
+                    that.getRight();
+                });
+                $(".pic").swipe({
+                    threshold : 30,
+                    swipeLeft : function(event){that.getRight();},
+                    swipeRight : function(event){that.getLeft();}
+                })
+            },
+            getLeft : function(){
+                var that = this;
+                paras.num --;
+                if(paras.num < 0){
+                    if(paras.loop){
+                        paras.num = (paras.len - 1);
+                    }else{
+                        paras.num = 0;
+                        alert("已经是第一张了,无法切换了");
+                    }
+                }
+                that.getLoad();
+            },
+            getRight : function(){
+                var that = this;
+                paras.num ++;
+                if(paras.num >= paras.len){
+                    if(paras.loop){
+                        paras.num = 0;
+                    }else{
+                        paras.num = (paras.len - 1);
+                        alert("已经是最后一张了,无法切换了");
+                    }
+                }
+                that.getLoad();
+            }
+        };
+
+        this_init.init();
+    })
+</script>
+</body>
+</html>
