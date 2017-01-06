@@ -11,9 +11,6 @@
     padding: 0;
     margin: 0;
   }
-  *,*:after,*:before{
-    box-sizing: border-box;
-  }
   .row:after{
     display: table;
     content: " ";
@@ -47,8 +44,13 @@
     border: 0;
   }
 }
+/* base */
 .base(){
   .cssReset();
+  html,body{
+    width: 100%;
+    height: 100%;
+  }
   body{
     font-size:12px;
     line-height: 1.4;
@@ -76,97 +78,12 @@
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;
-    &.iconfont-menu{
-      &:before{
-        content: "\e645";
-      }
-    }
-    &.iconfont-user{
-      &:before{
-        content: "\e642";
-      }
-    }
-    &.iconfont-wifi{
-      &:before{
-        content: "\e640";
-      }
-    }
-    &.iconfont-refresh{
-      &:before{
-        content: "\e63f";
-      }
-    }
-    &.iconfont-uncheck-circle{
-      &:before{
-        content: "\e611";
-      }
-    }
-    &.iconfont-check-circle{
-      &:before{
-        content: "\e613";
-      }
-    }
-    &.iconfont-uncheck-rect{
-      &:before{
-        content: "\e602";
-      }
-    }
-    &.iconfont-check-rect{
-      &:before{
-        content: "\e604";
-      }
-    }
-    &.iconfont-radio{
-      &:before{
-        content: "\e601";
-      }
-    }
-    &.iconfont-close{
-      &:before{
-        content: "\e605";
-      }
-    }
-    &.iconfont-top{
-      &:before{
-        content: "\e631";
-      }
-    }
-    &.iconfont-bottom{
-      &:before{
-        content: "\e635";
-      }
-    }
-    &.iconfont-left{
-      &:before{
-        content: "\e63c";
-      }
-    }
-    &.iconfont-right{
-      &:before{
-        content: "\e638";
-      }
-    }
-    &.iconfont-home{
-      &:before{
-        content: "\e626";
-      }
-    }
-    &.iconfont-false-fill{
-      &:before{
-        content: "\e606";
-      }
-    }
-    &.iconfont-true-fill{
-      &:before{
-        content: "\e612";
-      }
-    }
   }
   /***************************/
   /***         文本        ***/
   /***************************/
   .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{
-    color: #333;
+    color: #333333;
     font-family: inherit;
     font-weight: 500;
     line-height: 1.1;
@@ -206,7 +123,6 @@
   input[type="button"]{
     &.btn{
       -moz-user-select: none;
-      background-image: none;
       border: 1px solid transparent;
       border-radius: 4px;
       cursor: pointer;
@@ -218,25 +134,24 @@
       padding: 6px 32px;
       text-align: center;
       white-space: nowrap;
+      background-color: #ffffff;
+      color: #ffffff;
       &.btn-default {
-        background-color: #fff;
         border-color: @color-link;
         color: @color-link;
       }
       &.btn-primary {
         background-color:@color-link;
         border-color: @color-link;
-        color: #fff;
+
       }
       &.btn-warning {
         background-color:@color-showy;
         border-color: @color-showy;
-        color: #fff;
       }
       &.btn-default-disabled {
-        background-color: #fff;
         border-color: @color-muted;
-        color: #999;
+        color: @color-muted;
       }
     }
   }
@@ -246,7 +161,6 @@
     width: 256px;
     height:40px;
     line-height: 40px;
-    box-sizing: border-box;
     padding: 0 10px;
     border:1px solid #999999;
     margin:10px;
@@ -368,7 +282,11 @@
   }
 }
 
+
 .mediaLayout(){
+  *,*:after,*:before{
+    box-sizing: border-box;
+  }
   .container{
     padding: 0 15px;
     margin:0 auto;
