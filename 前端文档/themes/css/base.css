@@ -29,11 +29,6 @@ td {
   padding: 0;
   margin: 0;
 }
-.row:after {
-  display: table;
-  content: " ";
-  clear: both;
-}
 a {
   text-decoration: none;
 }
@@ -336,6 +331,11 @@ select + .iconfont-bottom {
 /* 行 row */
 .row {
   margin: 0 -15px;
+}
+.row:after {
+  display: table;
+  content: " ";
+  clear: both;
 }
 /* 列 col-xx-x */
 .col-xs-1,
